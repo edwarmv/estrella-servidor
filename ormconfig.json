@@ -1,0 +1,20 @@
+{
+   "type": "postgres",
+   "host": "localhost",
+   "port": 5432,
+   "username": "emv",
+   "password": "",
+   "database": "estrella",
+   "dropSchema": false,
+   "synchronize": true,
+   "logging": false,
+   "entities": [
+      "src/entities/**/*.ts"
+   ],
+   "seeds": [
+     "src/seeds/**/*.ts"
+   ],
+   "factories": [
+     "src/factories/**/*.ts"
+   ]
+}

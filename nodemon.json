@@ -1,0 +1,6 @@
+{
+  "watch": ["src", "ormconfig.json"],
+  "ext": "ts,js",
+  "ignore": [],
+  "exec": "NODE_PATH=./src ts-node ./src/index.ts"
+}
