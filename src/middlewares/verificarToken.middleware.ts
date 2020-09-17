@@ -1,6 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
-import { environment } from '../environments/environment';
 
 export const verificarToken = (req: Request, res: Response, next: NextFunction) => {
   const token = req.headers.authorization?.split(' ')[1];
@@ -9,7 +8,9 @@ export const verificarToken = (req: Request, res: Response, next: NextFunction) 
     return res.status(403).json({ error: 'No se ha proporcionado ningún token.' });
   }
 
-  jwt.verify(token, environment.tokenSecret, (err, decoded) => {
+  const TOKEN_SECRET = process.env.TOKEN_SECRET as string;
+
+  jwt.verify(token, TOKEN_SECRET, (err, decoded) => {
     if (err) {
       return res.status(400).json({ error: 'No se ha podido autentificar el token.' });
     }

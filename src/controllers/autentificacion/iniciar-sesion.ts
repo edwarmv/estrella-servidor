@@ -3,7 +3,6 @@ import { validationResult } from 'express-validator';
 import { getRepository } from 'typeorm';
 import { Usuario } from 'entities/usuario';
 import jwt from 'jsonwebtoken';
-import { environment } from 'environments/environment';
 import { RolUsuario } from 'entities/rol-usuario';
 
 type IniciarSesionBody = { correoElectronico: string, password: string };
@@ -29,7 +28,7 @@ export const iniciarSesion = async (req: Request, res: Response) => {
       // return res.status(401).json({ error: 'Cuenta no verificada.' });
     // }
 
-    if (!(await usuario.verificarPassword(password))) {
+    if (!usuario.verificarPassword(password)) {
       return res.status(400).json({ error: 'correo electrónico o contraseña incorrecto.' });
     }
 
@@ -37,11 +36,12 @@ export const iniciarSesion = async (req: Request, res: Response) => {
     .find({ usuario: { id: usuario.id } });
 
     const tiempo = 60 * 60 * 12; // 12hr
+    const TOKEN_SECRET = process.env.TOKEN_SECRET as string;
     const token = jwt.sign(
       {
         roles: rolesUsuario
       },
-      environment.tokenSecret,
+      TOKEN_SECRET,
       {
         expiresIn: tiempo,
         subject: usuario.id.toString()

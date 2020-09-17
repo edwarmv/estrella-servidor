@@ -4,7 +4,6 @@ import jwt from 'jsonwebtoken';
 import { getRepository, QueryFailedError } from 'typeorm';
 import { TokenVerificacion } from 'entities/token-verificacion';
 import { Usuario } from 'entities/usuario';
-import { environment } from '../../environments/environment';
 
 type UsuarioBody = { nombres: string, apellidos: string, correoElectronico: string, password: string };
 
@@ -27,7 +26,7 @@ export const crearUsuario = async (req: Request, res: Response) => {
     usuario.nombres = nombres;
     usuario.apellidos = apellidos;
     usuario.correoElectronico = correoElectronico.toLowerCase();
-    await usuario.setPassword(password);
+    usuario.setPassword(password);
 
     const nuevoUsuario = await getRepository(Usuario).save(usuario);
     delete nuevoUsuario.key;
@@ -36,9 +35,10 @@ export const crearUsuario = async (req: Request, res: Response) => {
     const tokenVerificacion = new TokenVerificacion();
     tokenVerificacion.usuario = nuevoUsuario;
     const medioDia = 60 * 60 * 12; // medio día
+    const TOKEN_SECRET = process.env.TOKEN_SECRET as string;
     tokenVerificacion.token = jwt.sign(
       { id: nuevoUsuario.id },
-      environment.tokenSecret,
+      TOKEN_SECRET,
       { expiresIn: medioDia }
     );
 

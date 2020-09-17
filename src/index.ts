@@ -1,29 +1,17 @@
+import { config } from 'dotenv';
+config();
 import 'reflect-metadata';
-import express, { Application } from 'express';
 import { createConnection } from 'typeorm';
 import { routes } from './routes/index';
-import { transporter } from './configuration/transporter';
+import { localTransporter } from './configuration/transporter';
+import { App } from 'app';
 
-const app: Application = express();
+export const basePath: string = __dirname;
 
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
+const app = new App(routes);
+app.listen(3000);
 
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');
-    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
-    res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
-    next();
-});
-
-app.use(routes);
-
-app.get('/', (req, res) => {
-  res.send('hello');
-});
-
-transporter.verify((error, success) => {
+localTransporter.verify((error, success) => {
   if (error) {
     console.log(error);
   } else {
@@ -34,7 +22,3 @@ transporter.verify((error, success) => {
 createConnection().then(() => {
   console.log('Database connected');
 }).catch(error => console.log(error));
-
-app.listen(3000,() => {
-  console.log('App is listening on port 3000!');
-});
