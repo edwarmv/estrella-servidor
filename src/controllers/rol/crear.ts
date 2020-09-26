@@ -10,15 +10,15 @@ export const crearRol = async (req: Request, res: Response) => {
 
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    return res.status(400).json({ errors: errors.array() });
+    return res.status(400).json({ mensaje: errors.array() });
   }
 
   const rol = new Rol();
   rol.nombre = nombre;
 
   try {
-    const nuevoRol = await getRepository(Rol).save(rol);
-    res.json(nuevoRol);
+    await getRepository(Rol).save(rol);
+    res.json({ mensaje: 'Rol creado' });
 
   } catch(error) {
     res.status(500).json(error);

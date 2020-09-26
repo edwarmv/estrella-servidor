@@ -22,6 +22,10 @@ export const asignarRolUsuario = async (req: Request, res: Response) => {
     res.status(201).json({ mensaje: 'Rol asignado correctamente' });
 
   } catch(error) {
-    res.status(500).json(error);
+    if (error.code === '23505') {
+      res.status(400).json({ mensaje: 'El rol ya se encuentra asignado' });
+    } else {
+      res.status(500).json(error);
+    }
   }
 };

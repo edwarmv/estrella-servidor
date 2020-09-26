@@ -10,6 +10,9 @@ export class Rol {
   @Column('varchar')
   nombre: string;
 
-  @OneToMany(type => RolUsuario, rolUsuario => rolUsuario.rol)
+  @Column('varchar', { nullable: true })
+  descripcion: string;
+
+  @OneToMany( type => RolUsuario, rolUsuario => rolUsuario.rol )
   rolesUsuarios: RolUsuario[];
 }

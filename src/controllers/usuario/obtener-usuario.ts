@@ -21,6 +21,10 @@ export const obtenerUsuario = async (req: Request, res: Response) => {
     delete usuario.key;
     delete usuario.salt;
 
+    if (!usuario.rolesUsuarios[0].rol) {
+      usuario.rolesUsuarios = [];
+    }
+
     res.json(usuario);
   } catch(error) {
     res.status(500).json(error);

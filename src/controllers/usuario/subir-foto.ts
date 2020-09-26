@@ -25,7 +25,6 @@ export const subirFotoUsuario = async (req: Request, res: Response) => {
     await getRepository(Usuario).update( idUsuario , { fotoPerfil: filename });
 
   } catch(error) {
-
     try {
       unlinkSync(filePath);
     } catch(fsError) {

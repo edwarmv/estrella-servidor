@@ -5,7 +5,12 @@ import { getRepository, QueryFailedError } from 'typeorm';
 import { TokenVerificacion } from 'entities/token-verificacion';
 import { Usuario } from 'entities/usuario';
 
-type UsuarioBody = { nombres: string, apellidos: string, correoElectronico: string, password: string };
+type UsuarioBody = {
+  nombres: string,
+  apellidos: string,
+  correoElectronico: string,
+  password: string
+};
 
 export const crearUsuario = async (req: Request, res: Response) => {
   const {

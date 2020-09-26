@@ -28,9 +28,11 @@ usuarioRoutes.put('/usuario/:id', [
   // verificarToken,
 ], actualizarUsuario);
 
-usuarioRoutes.delete('/usuario/:id', verificarToken, borrarUsuario);
+usuarioRoutes.delete('/usuario/:id', borrarUsuario);
 
-usuarioRoutes.post('/foto-usuario/:idUsuario', subirFotoUsuarioMiddleware,  subirFotoUsuario);
+usuarioRoutes.post('/foto-usuario/:idUsuario',
+                   subirFotoUsuarioMiddleware,
+                   subirFotoUsuario);
 
 
 usuarioRoutes.get('/foto-usuario/:nombreImagen', obtenerFotoUsuario);

@@ -1,8 +1,8 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
+import { Pedido } from './pedido';
 
 @Entity('clientes')
 export class Cliente {
-
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -26,4 +26,7 @@ export class Cliente {
 
   @Column({ type: 'varchar', name: 'coordenadas_direccion_domicilio', nullable: true })
   coordenadasDireccionDomicilio: string;
+
+  @OneToMany(type => Pedido, pedido => pedido.cliente)
+  pedidos: Pedido[];
 }

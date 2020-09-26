@@ -1,10 +1,10 @@
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
-import { randomBytes, scrypt, scryptSync } from 'crypto';
+import { randomBytes, scryptSync } from 'crypto';
 import { RolUsuario } from './rol-usuario';
+import { Pedido } from './pedido';
 
 @Entity('usuarios')
 export class Usuario {
-
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -26,7 +26,11 @@ export class Usuario {
   @Column({ type: 'varchar', name: 'direccion_domicilio', nullable: true })
   direccionDomicilio: string;
 
-  @Column({ type: 'varchar', name: 'coordenadas_direccion_domicilio', nullable: true })
+  @Column({
+    type: 'varchar',
+    name: 'coordenadas_direccion_domicilio',
+    nullable: true
+  })
   coordenadasDireccionDomicilio: string;
 
   @Column({ type: 'varchar', name: 'correo_electronico', unique: true })
@@ -38,7 +42,12 @@ export class Usuario {
   @Column({ type: 'boolean', name: 'cuenta_verificada', default: false })
   cuentaVerificada: boolean;
 
-  @Column({ type: 'boolean', nullable: false, default: false, name: 'es_empleado' })
+  @Column({
+    type: 'boolean',
+    nullable: false,
+    default: false,
+    name: 'es_empleado'
+  })
   esEmpleado: boolean;
 
   @Column('varchar')
@@ -47,8 +56,11 @@ export class Usuario {
   @Column('varchar')
   salt: string;
 
-  @OneToMany(type => RolUsuario, rolUsuario => rolUsuario.usuario, { onDelete: 'CASCADE' })
+  @OneToMany( type => RolUsuario, rolUsuario => rolUsuario.usuario )
   rolesUsuarios: RolUsuario[];
+
+  @OneToMany(type => Pedido, pedido => pedido.usuario)
+  pedidos: Pedido[];
 
   setPassword(password: string): void  {
     const salt = randomBytes(8).toString('hex');
@@ -56,33 +68,8 @@ export class Usuario {
     this.salt = salt;
   }
 
-  // setPassword(password: string): Promise<void | Error> {
-    // return new Promise((resolve, reject) => {
-      // const salt = randomBytes(8).toString('hex');
-
-      // scrypt(password, salt, 64, (err, derivedKey) => {
-        // if (err) reject(err);
-
-        // this.salt = salt;
-        // this.key = derivedKey.toString('hex');
-
-        // resolve();
-      // });
-    // });
-  // }
-
   verificarPassword(password: string): boolean {
     const key = scryptSync(password, this.salt, 64).toString('hex');
     return this.key === key;
   }
-
-  // verificarPassword(password: string): Promise<boolean | Error> {
-    // return new Promise((resolve, reject) => {
-      // scrypt(password, this.salt as string, 64, (err, derivedKey) => {
-        // if (err) reject(err);
-
-        // resolve(this.key === derivedKey.toString('hex'));
-      // });
-    // });
-  // }
 }

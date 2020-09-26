@@ -8,7 +8,7 @@ export const obtenerRolesUsuario = async (req: Request, res: Response) => {
   try {
     const rolesUsuario = await getRepository(RolUsuario).createQueryBuilder('rolUsuario')
     .innerJoinAndSelect('rolUsuario.rol', 'rol')
-    .where('rolUsuario.usuario.id = :idUsuario AND rolUsuario.estado = TRUE', { idUsuario })
+    .where('rolUsuario.usuario.id = :idUsuario', { idUsuario })
     .orderBy('rol.nombre', 'ASC')
     .getMany();
 

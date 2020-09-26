@@ -12,8 +12,6 @@ export const rolUsuarioRoutes = Router();
 rolUsuarioRoutes.post('/rol-usuario/', [
   body('idRol').notEmpty(),
   body('idUsuario').notEmpty(),
-  body('estado').notEmpty(),
-  body('rolPorDefecto').notEmpty()
 ], asignarRolUsuario);
 
 rolUsuarioRoutes.put('/rol-usuario/:idRol/:idUsuario', [
