@@ -7,23 +7,14 @@ export const obtenerUsuario = async (req: Request, res: Response) => {
 
   try {
     const usuario = await getRepository(Usuario)
-    .findOne(
-      id,
-      {
-        relations: [ 'rolesUsuarios', 'rolesUsuarios.rol' ]
-      }
-    );
+    .findOne(id);
 
     if (!usuario) {
       return res.status(404).json({ error: 'Usuario no encontrado.' });
     }
 
-    delete usuario.key;
-    delete usuario.salt;
-
-    if (!usuario.rolesUsuarios[0].rol) {
-      usuario.rolesUsuarios = [];
-    }
+    usuario.key = '';
+    usuario.salt = '';
 
     res.json(usuario);
   } catch(error) {

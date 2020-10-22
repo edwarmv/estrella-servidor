@@ -6,6 +6,7 @@ import { borrarRolUsuario } from 'controllers/rol-usuario/borrar-rol-usuario';
 import { obtenerRolUsuario } from 'controllers/rol-usuario/obtener-rol-usuario';
 import { obtenerRolesUsuario } from 'controllers/rol-usuario/obtener-roles-usuario';
 import { obtenerRolPorDefecto } from 'controllers/rol-usuario/obtener-rol-por-defecto';
+import { EstablecerRolPorDefectoController } from 'controllers/rol-usuario/establecer-rol-por-defecto';
 
 export const rolUsuarioRoutes = Router();
 
@@ -29,3 +30,5 @@ rolUsuarioRoutes.get('/rol-usuario/:idUsuario', obtenerRolesUsuario);
 
 rolUsuarioRoutes.get('/rol-por-defecto/:idUsuario', obtenerRolPorDefecto);
 
+const establecerRolPorDefecto = new EstablecerRolPorDefectoController().exec;
+rolUsuarioRoutes.put('/rol-por-defecto', establecerRolPorDefecto);

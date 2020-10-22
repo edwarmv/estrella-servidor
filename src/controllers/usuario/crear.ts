@@ -4,6 +4,8 @@ import jwt from 'jsonwebtoken';
 import { getRepository, QueryFailedError } from 'typeorm';
 import { TokenVerificacion } from 'entities/token-verificacion';
 import { Usuario } from 'entities/usuario';
+import { localTransporter } from 'configuration/transporter';
+import { htmlVerificacion } from 'configuration/correo-verificacion';
 
 type UsuarioBody = {
   nombres: string,
@@ -34,8 +36,8 @@ export const crearUsuario = async (req: Request, res: Response) => {
     usuario.setPassword(password);
 
     const nuevoUsuario = await getRepository(Usuario).save(usuario);
-    delete nuevoUsuario.key;
-    delete nuevoUsuario.salt;
+    nuevoUsuario.key = '';
+    nuevoUsuario.salt = '';
 
     const tokenVerificacion = new TokenVerificacion();
     tokenVerificacion.usuario = nuevoUsuario;
@@ -49,36 +51,30 @@ export const crearUsuario = async (req: Request, res: Response) => {
 
     await getRepository(TokenVerificacion).insert(tokenVerificacion);
 
-      // transporter.sendMail({
-        // from: 'no-reply@adminpro.com',
-        // to: correoElectronico,
-        // subject: 'Verificación de cuenta',
-        // text: `Hola, Por favor verifica tu cuenta haciendo click en el enlace \
-  // ${environment.url}/verificar-usuario/${tokenVerificacion.token}.`
-      // }, (err) => {
-        // if (err) {
-          // return res.status(500).json({
-            // error: err.message
-          // });
-        // }
+    const CLIENT_URL = process.env.CLIENT_URL as string;
 
-        // res.json({
-          // usuario: nuevoUsuario,
-          // token: tokenVerificacion.token,
-          // mensaje: `Un correo de verificación ha sido enviado a ${correoElectronico}.`
-        // });
-      // });
+    await localTransporter.sendMail({
+      from: 'Nodemailer <example@nodemailer.com>',
+      to: 'Nodemailer <example@nodemailer.com>',
+      subject: 'Verificación de cuenta',
+      html: htmlVerificacion(
+        `${usuario.nombres} ${usuario.apellidos}`,
+        `${CLIENT_URL}/verificar-usuario/${tokenVerificacion.token}`
+      )
+    });
 
     res.status(201).json({
       token: tokenVerificacion.token,
-      mensaje: `Un correo de verificación ha sido enviado a ${correoElectronico}.`
+      mensaje:
+        `Un correo de verificación ha sido enviado a ${correoElectronico}.`
     });
 
   } catch(error) {
     if (error instanceof QueryFailedError) {
       if (( error as any ).code === "23505") {
         res.status(400).json({
-          mensaje: `El correo electrónico ${correoElectronico} ya está registrado`
+          mensaje:
+            `El correo electrónico ${correoElectronico} ya está registrado`
         });
       }
     } else {

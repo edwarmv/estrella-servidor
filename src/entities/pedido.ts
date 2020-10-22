@@ -4,11 +4,13 @@ import {
   Column,
   CreateDateColumn,
   ManyToOne,
-  OneToMany
+  OneToMany,
+  JoinColumn
 } from 'typeorm';
 import { Cliente } from './cliente';
 import { DetallePedido } from './detalle-pedido';
 import { Usuario } from './usuario';
+import { PedidoRepartidor } from './pedido-repartidor';
 
 export enum EstadoPedido {
   PENDIENTE = 'pendiente',
@@ -41,12 +43,20 @@ export class Pedido {
   @Column({ type: 'enum', enum: EstadoPedido, default: EstadoPedido.PENDIENTE })
   estado: EstadoPedido;
 
-  @ManyToOne(type => Usuario, usuario => usuario.pedidos)
+  @ManyToOne(() => Usuario, usuario => usuario.pedidos)
+  @JoinColumn({ name: 'usuarios_id' })
   usuario: Usuario;
 
-  @ManyToOne(type => Cliente, cliente => cliente.pedidos)
+  @ManyToOne(() => Cliente, cliente => cliente.pedidos)
+  @JoinColumn({ name: 'clientes_id' })
   cliente: Cliente;
 
-  @OneToMany(type => DetallePedido, detallePedido => detallePedido.pedido)
+  @OneToMany(
+    () => PedidoRepartidor,
+    pedidoRepartidor => pedidoRepartidor.pedido
+  )
+  pedidosRepartidores: PedidoRepartidor[];
+
+  @OneToMany(() => DetallePedido, detallePedido => detallePedido.pedido)
   detallesPedidos: DetallePedido[];
 }

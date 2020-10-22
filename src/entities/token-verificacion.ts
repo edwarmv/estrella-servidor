@@ -5,7 +5,7 @@ import { Usuario } from './usuario';
 export class TokenVerificacion {
 
   @OneToOne(type => Usuario, { primary: true })
-  @JoinColumn({ name: 'usuario_id' })
+  @JoinColumn({ name: 'usuarios_id' })
   usuario: Usuario;
 
   @Column('varchar')

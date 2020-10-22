@@ -41,7 +41,7 @@ export const actualizarUsuario = async (req: Request, res: Response) => {
   usuario.direccionDomicilio = direccionDomicilio;
   usuario.coordenadasDireccionDomicilio = coordenadasDireccionDomicilio;
 
-  eliminarPropiedadesUndefined(usuario);
+  // eliminarPropiedadesUndefined(usuario);
 
   try {
     await getRepository(Usuario).update(id, usuario);
@@ -49,8 +49,8 @@ export const actualizarUsuario = async (req: Request, res: Response) => {
     const usuarioActualizado = await getRepository(Usuario).findOne(id);
 
     if (usuarioActualizado) {
-      delete usuarioActualizado.key;
-      delete usuarioActualizado.salt;
+      usuarioActualizado.key = '';
+      usuarioActualizado.salt = '';
     }
 
     res.json(usuarioActualizado);
@@ -60,8 +60,9 @@ export const actualizarUsuario = async (req: Request, res: Response) => {
   }
 };
 
-const eliminarPropiedadesUndefined = (usuario: Usuario): Usuario => {
-  Object.keys(usuario).forEach(key => usuario[key] === undefined && delete usuario[key]);
+// const eliminarPropiedadesUndefined = (usuario: Usuario): Usuario => {
+  // Object.keys(usuario)
+  // .forEach(key => usuario[key] === undefined && delete usuario[key]);
 
-  return usuario;
-};
+  // return usuario;
+// };

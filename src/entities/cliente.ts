@@ -24,9 +24,13 @@ export class Cliente {
   @Column({ type: 'varchar', name: 'direccion_domicilio', nullable: true })
   direccionDomicilio: string;
 
-  @Column({ type: 'varchar', name: 'coordenadas_direccion_domicilio', nullable: true })
+  @Column({
+    type: 'varchar',
+    name: 'coordenadas_direccion_domicilio',
+    nullable: true
+  })
   coordenadasDireccionDomicilio: string;
 
-  @OneToMany(type => Pedido, pedido => pedido.cliente)
+  @OneToMany(() => Pedido, pedido => pedido.cliente)
   pedidos: Pedido[];
 }

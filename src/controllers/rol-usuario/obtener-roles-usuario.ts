@@ -6,16 +6,14 @@ export const obtenerRolesUsuario = async (req: Request, res: Response) => {
   const idUsuario = req.params.idUsuario;
 
   try {
-    const rolesUsuario = await getRepository(RolUsuario).createQueryBuilder('rolUsuario')
+    const rolesUsuario = await getRepository(RolUsuario)
+    .createQueryBuilder('rolUsuario')
     .innerJoinAndSelect('rolUsuario.rol', 'rol')
     .where('rolUsuario.usuario.id = :idUsuario', { idUsuario })
     .orderBy('rol.nombre', 'ASC')
     .getMany();
 
-    const roles = rolesUsuario.map(rolUsuario => rolUsuario.rol);
-
-    res.json(roles);
-
+    res.json(rolesUsuario);
   } catch(error) {
     res.status(500).json(error);
   }

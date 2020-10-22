@@ -21,26 +21,25 @@ export const iniciarSesion = async (req: Request, res: Response) => {
     .findOne({ correoElectronico });
 
     if (!usuario) {
-      return res.status(404).json({ error: 'Usuario no encontrado.' });
+      return res.status(404).json({ mensaje: 'Usuario no encontrado.' });
     }
 
-    // if (!usuario.cuentaVerificada) {
-      // return res.status(401).json({ error: 'Cuenta no verificada.' });
-    // }
+    if (!usuario.cuentaVerificada) {
+      return res.status(401).json({
+        mensaje: 'Cuenta no verificada.',
+        idUsuario: usuario.id
+      });
+    }
 
     if (!usuario.verificarPassword(password)) {
-      return res.status(400).json({ error: 'correo electrónico o contraseña incorrecto.' });
+      return res.status(400)
+      .json({ mensaje: 'correo electrónico o contraseña incorrecto.' });
     }
-
-    const rolesUsuario: RolUsuario[] = await getRepository(RolUsuario)
-    .find({ usuario: { id: usuario.id } });
 
     const tiempo = 60 * 60 * 12; // 12hr
     const TOKEN_SECRET = process.env.TOKEN_SECRET as string;
     const token = jwt.sign(
-      {
-        roles: rolesUsuario
-      },
+      { },
       TOKEN_SECRET,
       {
         expiresIn: tiempo,
@@ -48,9 +47,8 @@ export const iniciarSesion = async (req: Request, res: Response) => {
       }
     );
 
-    delete usuario.key;
-    delete usuario.salt;
-    delete usuario.cuentaVerificada;
+    usuario.key = '';
+    usuario.salt = '';
 
     // en caso de que el usuario no tenga un rol asignado
     // if (!usuario.rolesUsuarios[0].rol) {

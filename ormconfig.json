@@ -2,10 +2,10 @@
    "type": "postgres",
    "host": "localhost",
    "port": 5432,
-   "username": "emv",
+   "username": "edwar",
    "password": "",
    "database": "estrella",
-   "dropSchema": false,
+   "dropSchema": true,
    "synchronize": true,
    "logging": false,
    "entities": [

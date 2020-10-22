@@ -20,7 +20,7 @@ export const subirFotoUsuario = async (req: Request, res: Response) => {
       }
     }
 
-    (await Jimp.read(filePath)).resize(180, Jimp.AUTO).write(filePath);
+    (await Jimp.read(filePath)).resize(400, Jimp.AUTO).write(filePath);
 
     await getRepository(Usuario).update( idUsuario , { fotoPerfil: filename });
 

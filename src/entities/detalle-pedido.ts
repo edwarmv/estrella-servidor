@@ -26,9 +26,10 @@ export class DetallePedido {
   cantidad: number;
 
   @ManyToOne(type => Pedido, pedido => pedido.detallesPedidos)
+  @JoinColumn({ name: 'pedidos_id' })
   pedido: Pedido;
 
   @OneToOne(type => Producto)
-  @JoinColumn()
+  @JoinColumn({ name: 'productos_id' })
   producto: Producto;
 }

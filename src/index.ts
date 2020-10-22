@@ -19,6 +19,8 @@ localTransporter.verify((error, success) => {
   }
 });
 
-createConnection().then(() => {
+createConnection()
+.then(() => {
   console.log('Database connected');
-}).catch(error => console.log(error));
+})
+.catch(error => console.log(error));
