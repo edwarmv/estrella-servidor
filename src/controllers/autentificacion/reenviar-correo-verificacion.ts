@@ -39,7 +39,7 @@ export const reenviarCorreoVerificacion =
       to: 'Nodemailer <example@nodemailer.com>',
       subject: 'Verificación de cuenta',
       html: htmlVerificacion(
-        `${usuario.nombres} ${usuario.apellidos}`,
+        `${usuario.nombre} ${usuario.apellido}`,
         `${CLIENT_URL}/verificar-usuario/${token}`
       )
     });

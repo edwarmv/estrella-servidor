@@ -4,8 +4,8 @@ import { Cliente } from 'entities/cliente';
 import { validationResult } from 'express-validator';
 
 export type Body = {
-  nombres: string,
-  apellidos: string,
+  nombre: string,
+  apellido: string,
   nitCI: string,
   telefonoFijo: string,
   telefonoMovil: string,
@@ -15,8 +15,8 @@ export type Body = {
 
 export const crearCliente = async (req: Request, res: Response) => {
   const {
-    nombres,
-    apellidos,
+    nombre,
+    apellido,
     nitCI,
     telefonoFijo,
     telefonoMovil,
@@ -32,8 +32,8 @@ export const crearCliente = async (req: Request, res: Response) => {
 
   try {
     await getRepository(Cliente).insert({
-      nombres,
-      apellidos,
+      nombre,
+      apellido,
       nitCI,
       telefonoFijo,
       telefonoMovil,

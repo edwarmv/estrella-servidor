@@ -14,11 +14,19 @@ export const obtenerClientes = async (req: Request, res: Response) => {
     .createQueryBuilder('cliente')
     .skip(skip as number)
     .take(take as number)
-    .orderBy('cliente.nombres', 'ASC')
-    .orderBy('cliente.apellidos', 'ASC')
+    .orderBy('cliente.nombre', 'ASC')
+    .orderBy('cliente.apellido', 'ASC')
     .where(
-      'LOWER(cliente.nombres) LIKE :nombres',
-      { nombres: `%${(termino as string).toLowerCase()}%` }
+      'LOWER(cliente.nitCI) LIKE :nitCI',
+      { nitCI: `%${(termino as string).toLowerCase()}%` }
+    )
+    .orWhere(
+      'LOWER(cliente.nombre) LIKE :nombre',
+      { nombre: `%${(termino as string).toLowerCase()}%` }
+    )
+    .orWhere(
+      'LOWER(cliente.apellido) LIKE :apellido',
+      { apellido: `%${(termino as string).toLowerCase()}%` }
     )
     .getManyAndCount();
 

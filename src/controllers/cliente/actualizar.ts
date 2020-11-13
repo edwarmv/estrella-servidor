@@ -9,8 +9,8 @@ export const actualizarCliente = async (req: Request, res: Response) => {
   const id = req.params.id;
 
   const {
-    nombres,
-    apellidos,
+    nombre,
+    apellido,
     nitCI,
     telefonoFijo,
     telefonoMovil,
@@ -26,8 +26,8 @@ export const actualizarCliente = async (req: Request, res: Response) => {
 
   try {
     await getRepository(Cliente).update(id, {
-      nombres,
-      apellidos,
+      nombre,
+      apellido,
       nitCI,
       telefonoFijo,
       telefonoMovil,
