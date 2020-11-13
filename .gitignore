@@ -3,3 +3,9 @@ tags
 /imagenes
 /build
 /.git
+
+# Vim Files
+Session.vim
+
+# Sistem Files
+.DS_Store
