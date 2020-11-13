@@ -15,8 +15,8 @@ export const obtenerUsuarios = async (req: Request, res: Response) => {
     .take(take as number)
     .select([
       'usuario.id',
-      'usuario.nombres',
-      'usuario.apellidos',
+      'usuario.nombre',
+      'usuario.apellido',
       'usuario.nitCI',
       'usuario.telefonoFijo',
       'usuario.telefonoMovil',
@@ -25,10 +25,10 @@ export const obtenerUsuarios = async (req: Request, res: Response) => {
       'usuario.correoElectronico',
       'usuario.cuentaVerificada',
     ])
-    .orderBy('usuario.nombres', 'ASC')
-    .addOrderBy('usuario.apellidos', 'ASC')
+    .orderBy('usuario.nombre', 'ASC')
+    .addOrderBy('usuario.apellido', 'ASC')
     .where(
-      'LOWER(usuario.nombres) LIKE :nombres',
+      'LOWER(usuario.nombre) LIKE :nombre',
       { nombres: `%${(termino as string).toLowerCase()}%` }
     )
     .getManyAndCount();

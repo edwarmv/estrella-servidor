@@ -8,16 +8,16 @@ import { localTransporter } from 'configuration/transporter';
 import { htmlVerificacion } from 'configuration/correo-verificacion';
 
 type UsuarioBody = {
-  nombres: string,
-  apellidos: string,
+  nombre: string,
+  apellido: string,
   correoElectronico: string,
   password: string
 };
 
 export const crearUsuario = async (req: Request, res: Response) => {
   const {
-    nombres,
-    apellidos,
+    nombre,
+    apellido,
     correoElectronico,
     password
   }: UsuarioBody = req.body;
@@ -30,8 +30,8 @@ export const crearUsuario = async (req: Request, res: Response) => {
 
   try {
     const usuario = new Usuario();
-    usuario.nombres = nombres;
-    usuario.apellidos = apellidos;
+    usuario.nombre = nombre;
+    usuario.apellido = apellido;
     usuario.correoElectronico = correoElectronico.toLowerCase();
     usuario.setPassword(password);
 
@@ -58,7 +58,7 @@ export const crearUsuario = async (req: Request, res: Response) => {
       to: 'Nodemailer <example@nodemailer.com>',
       subject: 'Verificación de cuenta',
       html: htmlVerificacion(
-        `${usuario.nombres} ${usuario.apellidos}`,
+        `${usuario.nombre} ${usuario.apellido}`,
         `${CLIENT_URL}/verificar-usuario/${tokenVerificacion.token}`
       )
     });

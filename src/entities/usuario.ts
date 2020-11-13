@@ -10,10 +10,10 @@ export class Usuario {
   id: number;
 
   @Column('varchar')
-  nombres: string;
+  nombre: string;
 
   @Column('varchar')
-  apellidos: string;
+  apellido: string;
 
   @Column({ type: 'varchar', name: 'nit_ci', nullable: true })
   nitCI: string;

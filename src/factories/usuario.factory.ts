@@ -5,9 +5,9 @@ import { Usuario } from 'entities/usuario';
 define(Usuario, (faker: typeof Faker) => {
   const usuario = new Usuario();
 
-  usuario.nombres = faker.name.firstName();
+  usuario.nombre = faker.name.firstName();
 
-  usuario.apellidos = faker.name.lastName();
+  usuario.apellido = faker.name.lastName();
 
   usuario.nitCI = faker.random.number({ min: 1000000000 }).toString();
 

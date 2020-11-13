@@ -4,8 +4,8 @@ import { Usuario } from 'entities/usuario';
 import { getRepository } from 'typeorm';
 
 type UsuarioBody = {
-  nombres: string,
-  apellidos: string,
+  nombre: string,
+  apellido: string,
   nitCI: string,
   telefonoFijo: string,
   telefonoMovil: string,
@@ -15,8 +15,8 @@ type UsuarioBody = {
 
 export const actualizarUsuario = async (req: Request, res: Response) => {
   const {
-    nombres,
-    apellidos,
+    nombre,
+    apellido,
     nitCI,
     telefonoFijo,
     telefonoMovil,
@@ -33,8 +33,8 @@ export const actualizarUsuario = async (req: Request, res: Response) => {
   }
 
   const usuario = new Usuario();
-  usuario.nombres = nombres;
-  usuario.apellidos = apellidos;
+  usuario.nombre = nombre;
+  usuario.apellido = apellido;
   usuario.nitCI = nitCI;
   usuario.telefonoFijo = telefonoFijo;
   usuario.telefonoMovil = telefonoMovil;
