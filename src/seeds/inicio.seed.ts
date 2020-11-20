@@ -5,11 +5,11 @@ import { Menu } from 'entities/menu';
 import { RolMenu } from 'entities/rol-menu';
 import { Factory, Seeder } from 'typeorm-seeding';
 import { Connection } from 'typeorm';
-import { Cliente } from 'entities/cliente';
+import { Submenu } from 'entities/submenu';
 
 export default class InicioSeeder implements Seeder {
   public async run(factory: Factory, connection: Connection): Promise<void> {
-    // Creamos el rol
+    // Creamos los roles
     await connection
     .createQueryBuilder()
     .insert()
@@ -21,12 +21,12 @@ export default class InicioSeeder implements Seeder {
       },
       {
         nombre: 'Cliente',
-        descripcion: 'Accede a las funciones básicas del sistema'
+        descripcion: 'Accede a las funciones b√°sicas del sistema'
       }
     ])
     .execute();
 
-    // Obtenemos el id del rol
+    // Obtenemos los id del roles
     const rolAdministrador = await connection
     .createQueryBuilder(Rol, 'rol')
     .where("rol.nombre = 'Administrador'")
@@ -38,18 +38,110 @@ export default class InicioSeeder implements Seeder {
     .getOne();
 
     // Creamos un usuario
-    await factory(Usuario)().create({ correoElectronico: 'edwar@edwar.com' });
+    await factory(Usuario)().create({
+      correoElectronico: 'edwar@edwar.com',
+      cuentaVerificada: true
+    });
 
-    // Asignamos el rol Administrador al usuario edwar@edwar.com
+    // Asignamos los roles al usuario edwar@edwar.com
     await connection
     .createQueryBuilder()
     .insert()
     .into(RolUsuario)
     .values([
-      { rol: rolAdministrador, usuario: { id: 1 } },
+      { rol: rolAdministrador, usuario: { id: 1 }, rolPorDefecto: true },
       { rol: rolCliente, usuario: { id: 1 } }
     ])
     .execute();
+
+    // Creamos los submenus
+    await connection
+    .createQueryBuilder()
+    .insert()
+    .into(Submenu)
+    .values([
+      { nombre: 'Pedidos', path: '/pedidos' },
+      { nombre: 'Lista de pedidos', path: '/pedidos/lista-pedidos' },
+      { nombre: 'Registrar pedido', path: '/pedidos/nuevo-pedido' },
+      { nombre: 'Productos', path: '/productos' },
+      { nombre: 'Registrar producto', path: '/productos/nuevo-producto' },
+      { nombre: 'Usuarios', path: '/usuarios' },
+      { nombre: 'Roles', path: '/roles' },
+      { nombre: 'Registrar rol', path: '/roles/nuevo-rol' },
+      { nombre: 'Menús', path: '/menus' },
+      { nombre: 'Registrar menú', path: '/menus/nuevo-menu' },
+      { nombre: 'Submenús', path: '/submenus' },
+      { nombre: 'Registrar submenú', path: '/submenus/nuevo-submenu' },
+      { nombre: 'Clientes', path: '/clientes' },
+      { nombre: 'Registrar cliente', path: '/clientes/nuevo-cliente' },
+    ])
+    .execute();
+
+    // Creamos los menus
+    await connection
+    .createQueryBuilder()
+    .insert()
+    .into(Menu)
+    .values([
+      { nombre: 'Gestionar pedidos' },
+      { nombre: 'Gestionar productos' },
+      { nombre: 'Gestionar usuarios' },
+      { nombre: 'Gestionar roles' },
+      { nombre: 'Gestionar menús' },
+      { nombre: 'Gestionar submenús' },
+      { nombre: 'Gestionar clientes' },
+    ])
+    .execute();
+
+    // Menu gestionar pedidos
+    await connection
+    .createQueryBuilder()
+    .relation(Menu, 'submenus')
+    .of(1)
+    .add([1, 2, 3]);
+
+    // Menu gestionar productos
+    await connection
+    .createQueryBuilder()
+    .relation(Menu, 'submenus')
+    .of(2)
+    .add([4, 5]);
+
+    // Menu gestionar usuarios
+    await connection
+    .createQueryBuilder()
+    .relation(Menu, 'submenus')
+    .of(3)
+    .add(6);
+
+    // Menu gestionar roles
+    await connection
+    .createQueryBuilder()
+    .relation(Menu, 'submenus')
+    .of(4)
+    .add([7, 8]);
+
+    // Menu gestionar menus
+    await connection
+    .createQueryBuilder()
+    .relation(Menu, 'submenus')
+    .of(5)
+    .add([9, 10]);
+
+    // Menu gestionar submenus
+    await connection
+    .createQueryBuilder()
+    .relation(Menu, 'submenus')
+    .of(6)
+    .add([11, 12]);
+
+    // Menu gestionar clientes
+    await connection
+    .createQueryBuilder()
+    .relation(Menu, 'submenus')
+    .of(7)
+    .add([13, 14]);
+
 
     // Obtenemos un array de todos los menús
     const menus = await connection

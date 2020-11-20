@@ -24,12 +24,22 @@ export const obtenerUsuarios = async (req: Request, res: Response) => {
       'usuario.coordenadasDireccionDomicilio',
       'usuario.correoElectronico',
       'usuario.cuentaVerificada',
+      'usuario.esEmpleado',
+      'usuario.estado',
     ])
     .orderBy('usuario.nombre', 'ASC')
     .addOrderBy('usuario.apellido', 'ASC')
     .where(
+      'LOWER(usuario.nitCI) LIKE :nitCI',
+      { nitCI: `%${(termino as string).toLowerCase()}%` }
+    )
+    .orWhere(
       'LOWER(usuario.nombre) LIKE :nombre',
-      { nombres: `%${(termino as string).toLowerCase()}%` }
+      { nombre: `%${(termino as string).toLowerCase()}%` }
+    )
+    .orWhere(
+      'LOWER(usuario.apellido) LIKE :apellido',
+      { apellido: `%${(termino as string).toLowerCase()}%` }
     )
     .getManyAndCount();
 

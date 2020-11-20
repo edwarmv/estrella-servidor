@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { ObtenerMenusController } from 'controllers/rol-menu/obtener-menus';
 import { ObtenerMenusRolPorDefecto } from 'controllers/rol-menu/obtener-menus-rol-por-defecto';
+import { borrarRolMenu } from 'controllers/rol-menu/borrar';
 
 export const rolMenuRoutes = Router();
 
@@ -15,3 +16,5 @@ rolMenuRoutes.get(
   '/menus-rol-por-defecto/:idUsuario',
   obtenerMenusRolPorDefecto
 );
+
+rolMenuRoutes.delete('/rol-menu/:idRol/:idMenu', borrarRolMenu);

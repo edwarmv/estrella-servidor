@@ -6,6 +6,9 @@ import { rolUsuarioRoutes } from './rol-usuario';
 import { productoRoutes } from './producto';
 import { clienteRoutes } from './cliente';
 import { rolMenuRoutes } from './rol-menu';
+import { pedidoRoutes } from './pedido';
+import { menuRoutes } from './menu';
+import { submenuRoutes } from './submenu';
 
 export const routes = express.Router();
 
@@ -16,3 +19,6 @@ routes.use(rolUsuarioRoutes);
 routes.use(productoRoutes);
 routes.use(clienteRoutes);
 routes.use(rolMenuRoutes);
+routes.use(menuRoutes);
+routes.use(submenuRoutes);
+routes.use(pedidoRoutes);

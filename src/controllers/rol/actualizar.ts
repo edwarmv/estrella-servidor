@@ -2,13 +2,11 @@ import { Request, Response } from 'express';
 import { validationResult } from 'express-validator';
 import { getRepository } from 'typeorm';
 import { Rol } from 'entities/rol';
-
-type RolBody = { nombre: string };
+import { RolMenu } from 'entities/rol-menu';
 
 export const actualizarRol = async (req: Request, res: Response) => {
   const id = req.params.id;
-
-  const { nombre }: RolBody = req.body;
+  const { nombre, descripcion, rolesMenus }: Rol = req.body;
 
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -16,8 +14,13 @@ export const actualizarRol = async (req: Request, res: Response) => {
   }
 
   try {
-    await getRepository(Rol).update(id, {
-      nombre
+    await getRepository(Rol).update(id, { nombre, descripcion });
+
+    rolesMenus.forEach(async rolMenu => {
+      await getRepository(RolMenu).insert({
+        rol: { id: parseInt(id, 10) },
+        menu: rolMenu.menu
+      });
     });
 
     res.json({ mensaje: 'Rol actualizado' });

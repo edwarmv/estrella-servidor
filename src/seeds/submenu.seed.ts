@@ -1,9 +1,9 @@
 import { Seeder, Factory } from 'typeorm-seeding';
 import { Connection } from 'typeorm';
-import { Menu } from 'entities/menu';
+import { Submenu } from 'entities/submenu';
 
-export default class CrearMenu implements Seeder{
+export default class CrearSubmenu implements Seeder {
   public async run(factory: Factory, connection: Connection): Promise<any> {
-    await factory(Menu)().createMany(50);
+    await factory(Submenu)().createMany(50);
   }
 }

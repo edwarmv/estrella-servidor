@@ -5,7 +5,7 @@
    "username": "edwar",
    "password": "",
    "database": "estrella",
-   "dropSchema": true,
+   "dropSchema": false,
    "synchronize": true,
    "logging": false,
    "entities": [

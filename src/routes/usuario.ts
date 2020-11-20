@@ -6,7 +6,7 @@ import { crearUsuario } from 'controllers/usuario/crear';
 import { obtenerUsuarios } from 'controllers/usuario/obtener-usuarios';
 import { obtenerUsuario } from 'controllers/usuario/obtener-usuario';
 import { actualizarUsuario } from 'controllers/usuario/actualizar';
-import { borrarUsuario } from 'controllers/usuario/borrar';
+import { cambiarEstadoUsuario } from 'controllers/usuario/cambiar-estado';
 import { subirFotoUsuarioMiddleware } from 'middlewares/subir-foto-usuario';
 import { subirFotoUsuario } from 'controllers/usuario/subir-foto';
 import { obtenerFotoUsuario } from 'controllers/usuario/obtener-foto';
@@ -28,7 +28,7 @@ usuarioRoutes.put('/usuario/:id', [
   // verificarToken,
 ], actualizarUsuario);
 
-usuarioRoutes.delete('/usuario/:id', borrarUsuario);
+usuarioRoutes.delete('/usuario/:id', cambiarEstadoUsuario);
 
 usuarioRoutes.post('/foto-usuario/:idUsuario',
                    subirFotoUsuarioMiddleware,

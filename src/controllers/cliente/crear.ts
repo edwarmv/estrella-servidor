@@ -3,16 +3,6 @@ import { getRepository } from 'typeorm';
 import { Cliente } from 'entities/cliente';
 import { validationResult } from 'express-validator';
 
-export type Body = {
-  nombre: string,
-  apellido: string,
-  nitCI: string,
-  telefonoFijo: string,
-  telefonoMovil: string,
-  direccionDomicilio: string,
-  coordenadasDireccionDomicilio: string
-};
-
 export const crearCliente = async (req: Request, res: Response) => {
   const {
     nombre,
@@ -22,7 +12,7 @@ export const crearCliente = async (req: Request, res: Response) => {
     telefonoMovil,
     direccionDomicilio,
     coordenadasDireccionDomicilio
-  }: Body = req.body;
+  }: Cliente = req.body;
 
   const error = validationResult(req);
 

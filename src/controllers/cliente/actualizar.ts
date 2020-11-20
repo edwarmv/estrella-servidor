@@ -2,8 +2,6 @@ import { Request, Response } from 'express';
 import { getRepository } from 'typeorm';
 import { Cliente } from 'entities/cliente';
 import { validationResult } from 'express-validator';
-import { Body } from './crear';
-
 
 export const actualizarCliente = async (req: Request, res: Response) => {
   const id = req.params.id;
@@ -16,7 +14,7 @@ export const actualizarCliente = async (req: Request, res: Response) => {
     telefonoMovil,
     direccionDomicilio,
     coordenadasDireccionDomicilio
-  }: Body = req.body;
+  }: Cliente = req.body;
 
   const error = validationResult(req);
 
@@ -37,6 +35,9 @@ export const actualizarCliente = async (req: Request, res: Response) => {
 
     res.status(201).json({ mensaje: 'Cliente actualizado' });
   } catch(error) {
+    if (error.code === '23505') {
+      return res.status(400).json({ mensaje: 'NIT/CI ya registrado' });
+    }
     res.status(500).json(error);
   }
 };

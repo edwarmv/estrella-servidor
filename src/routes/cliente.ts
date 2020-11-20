@@ -9,14 +9,14 @@ import { obtenerCliente } from 'controllers/cliente/obtener-cliente';
 export const clienteRoutes = Router();
 
 clienteRoutes.post('/cliente', [
-  body('nombres').notEmpty(),
-  body('apellidos').notEmpty(),
+  body('nombre').notEmpty(),
+  body('apellido').notEmpty(),
   body('nitCI').notEmpty(),
 ], crearCliente);
 
 clienteRoutes.put('/cliente/:id', [
-  body('nombres').notEmpty(),
-  body('apellidos').notEmpty(),
+  body('nombre').notEmpty(),
+  body('apellido').notEmpty(),
   body('nitCI').notEmpty(),
 ], actualizarCliente);
 

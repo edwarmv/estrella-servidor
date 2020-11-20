@@ -10,10 +10,7 @@ import { EstablecerRolPorDefectoController } from 'controllers/rol-usuario/estab
 
 export const rolUsuarioRoutes = Router();
 
-rolUsuarioRoutes.post('/rol-usuario/', [
-  body('idRol').notEmpty(),
-  body('idUsuario').notEmpty(),
-], asignarRolUsuario);
+rolUsuarioRoutes.post('/rol-usuario/', asignarRolUsuario);
 
 rolUsuarioRoutes.put('/rol-usuario/:idRol/:idUsuario', [
   body('idRol').notEmpty(),

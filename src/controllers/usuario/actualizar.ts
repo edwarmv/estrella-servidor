@@ -3,16 +3,6 @@ import { validationResult } from 'express-validator';
 import { Usuario } from 'entities/usuario';
 import { getRepository } from 'typeorm';
 
-type UsuarioBody = {
-  nombre: string,
-  apellido: string,
-  nitCI: string,
-  telefonoFijo: string,
-  telefonoMovil: string,
-  direccionDomicilio: string,
-  coordenadasDireccionDomicilio: string
-};
-
 export const actualizarUsuario = async (req: Request, res: Response) => {
   const {
     nombre,
@@ -21,8 +11,10 @@ export const actualizarUsuario = async (req: Request, res: Response) => {
     telefonoFijo,
     telefonoMovil,
     direccionDomicilio,
-    coordenadasDireccionDomicilio
-  }: UsuarioBody = req.body;
+    coordenadasDireccionDomicilio,
+    esEmpleado,
+    estado,
+  }: Usuario = req.body;
 
   const id = req.params.id;
 
@@ -40,29 +32,18 @@ export const actualizarUsuario = async (req: Request, res: Response) => {
   usuario.telefonoMovil = telefonoMovil;
   usuario.direccionDomicilio = direccionDomicilio;
   usuario.coordenadasDireccionDomicilio = coordenadasDireccionDomicilio;
-
-  // eliminarPropiedadesUndefined(usuario);
+  usuario.esEmpleado = esEmpleado;
+  usuario.estado = estado;
 
   try {
     await getRepository(Usuario).update(id, usuario);
 
-    const usuarioActualizado = await getRepository(Usuario).findOne(id);
-
-    if (usuarioActualizado) {
-      usuarioActualizado.key = '';
-      usuarioActualizado.salt = '';
-    }
-
-    res.json(usuarioActualizado);
+    res.json({ mensaje: 'Usuario actualizado' });
 
   } catch(error) {
+    if (error.code === '23505') {
+      return res.status(400).json({ mensaje: 'NIT/CI ya registrado' });
+    }
     res.status(500).json(error);
   }
 };
-
-// const eliminarPropiedadesUndefined = (usuario: Usuario): Usuario => {
-  // Object.keys(usuario)
-  // .forEach(key => usuario[key] === undefined && delete usuario[key]);
-
-  // return usuario;
-// };

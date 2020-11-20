@@ -12,7 +12,7 @@ export class Cliente {
   @Column('varchar')
   apellido: string;
 
-  @Column({ type: 'varchar', name: 'nit_ci' })
+  @Column({ type: 'varchar', name: 'nit_ci', unique: true })
   nitCI: string;
 
   @Column({ type: 'varchar', name: 'telefono_fijo', nullable: true })

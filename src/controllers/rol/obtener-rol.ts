@@ -6,7 +6,8 @@ export const obtenerRol = async (req: Request, res: Response) => {
   const id = req.params.id;
 
   try {
-    const rol = await getRepository(Rol).findOne(id);
+    const rol = await getRepository(Rol)
+    .findOne(id, { relations: ['rolesMenus', 'rolesMenus.menu'] });
 
     if (!rol) {
       return res.status(404).json({ mensaje: 'Rol no encontrado' });

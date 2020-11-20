@@ -5,7 +5,7 @@ export class Producto {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column('varchar')
+  @Column({ unique: true })
   nombre: string;
 
   @Column('varchar', { nullable: true })
@@ -16,4 +16,7 @@ export class Producto {
 
   @Column('varchar', { nullable: true })
   foto: string;
+
+  @Column({ default: true })
+  estado: boolean;
 }

@@ -14,6 +14,9 @@ export const obtenerCliente = async (req: Request, res: Response) => {
 
     res.json(cliente);
   } catch(error) {
+    if (error.code === '22P02') {
+      return res.status(400).json({ mensaje: 'ID inválida' });
+    }
     res.status(500).json(error);
   }
 };

@@ -15,7 +15,7 @@ export class Usuario {
   @Column('varchar')
   apellido: string;
 
-  @Column({ type: 'varchar', name: 'nit_ci', nullable: true })
+  @Column({ type: 'varchar', name: 'nit_ci', nullable: true, unique: true })
   nitCI: string;
 
   @Column({ type: 'varchar', name: 'telefono_fijo', nullable: true })
@@ -50,6 +50,9 @@ export class Usuario {
     name: 'es_empleado'
   })
   esEmpleado: boolean;
+
+  @Column({ default: true })
+  estado: boolean;
 
   @Column('varchar')
   key: string;
