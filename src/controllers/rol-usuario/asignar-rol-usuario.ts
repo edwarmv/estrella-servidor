@@ -1,23 +1,12 @@
 import { Request, Response } from 'express';
-import { validationResult } from 'express-validator';
 import { RolUsuario } from 'entities/rol-usuario';
 import { getRepository } from 'typeorm';
 
-type RolUsuarioBody = { idRol: string, idUsuario: string };
-
 export const asignarRolUsuario = async (req: Request, res: Response) => {
-  const { idRol, idUsuario }: RolUsuarioBody = req.body;
-
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    return res.status(400).json({ errors: errors.array() });
-  }
+  const rolUsuario: RolUsuario = req.body;
 
   try {
-    await getRepository(RolUsuario).insert({
-      rol: { id: parseInt(idRol, 10) },
-      usuario: { id: parseInt(idUsuario, 10) }
-    });
+    await getRepository(RolUsuario).insert(rolUsuario);
 
     res.status(201).json({ mensaje: 'Rol asignado correctamente' });
 
