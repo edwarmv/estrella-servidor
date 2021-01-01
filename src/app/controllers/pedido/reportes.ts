@@ -103,10 +103,10 @@ export class ReportesPedido {
 
       const fonts: TFontDictionary = {
         Roboto: {
-          normal: `${basePath}/./../assets/fonts/Roboto/Roboto-Regular.ttf`,
-          bold: `${basePath}/./../assets/fonts/Roboto/Roboto-Medium.ttf`,
-          italics: `${basePath}/./../assets/fonts/Roboto/Roboto-Italic.ttf`,
-          bolditalics: `${basePath}/./../assets/fonts/Roboto/Roboto-MediumItalic.ttf`
+          normal: `${basePath}/assets/fonts/Roboto/Roboto-Regular.ttf`,
+          bold: `${basePath}/assets/fonts/Roboto/Roboto-Medium.ttf`,
+          italics: `${basePath}/assets/fonts/Roboto/Roboto-Italic.ttf`,
+          bolditalics: `${basePath}/assets/fonts/Roboto/Roboto-MediumItalic.ttf`
         }
       };
 
