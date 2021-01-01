@@ -9,12 +9,12 @@
    "synchronize": true,
    "logging": false,
    "entities": [
-      "src/entities/**/*.ts"
+      "src/app/entities/**/*.ts"
    ],
    "seeds": [
-     "src/seeds/**/*.ts"
+     "src/app/seeds/**/*.ts"
    ],
    "factories": [
-     "src/factories/**/*.ts"
+     "src/app/factories/**/*.ts"
    ]
 }

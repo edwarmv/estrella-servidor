@@ -2,9 +2,9 @@ import { config } from 'dotenv';
 config();
 import 'reflect-metadata';
 import { createConnection } from 'typeorm';
-import { routes } from './routes/index';
-import { localTransporter } from './configuration/transporter';
-import { App } from 'app';
+import { routes } from './app/routes/index';
+import { localTransporter } from './app/configuration/transporter';
+import { App } from './app/app';
 
 export const basePath: string = __dirname;
 
