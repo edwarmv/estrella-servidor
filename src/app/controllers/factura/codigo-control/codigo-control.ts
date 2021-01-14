@@ -114,7 +114,7 @@ export class CodigoControl {
 
   private paso2(
     digitosVerhoeff: string,
-    llaveDocificacion: string,
+    llaveDosificacion: string,
     numeroAutorizacion: string,
     numeroFactura: string,
     nitCI: string,
@@ -124,7 +124,7 @@ export class CodigoControl {
     const array = digitosVerhoeff.split('');
     let aux = 0;
     array.forEach((value, i) => {
-      array[i] = llaveDocificacion
+      array[i] = llaveDosificacion
         .substring(aux, (parseInt(value, 10) + 1 + aux));
       aux += parseInt(value, 10) + 1;
     });

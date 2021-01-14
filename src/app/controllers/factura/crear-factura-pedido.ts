@@ -188,7 +188,7 @@ export class CrearFacturaPedido {
           },
           { text: `Nº AUTORIZACIÓN: ${dosificacion.numeroAutorizacion}` },
           {
-            text: casaMatriz.descripcionActivadEconomica,
+            text: casaMatriz.descripcionActividadEconomica,
             margin: [0, 5],
             alignment: 'center'
           },

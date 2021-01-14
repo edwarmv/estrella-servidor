@@ -10,6 +10,7 @@ import { pedidoRoutes } from './pedido';
 import { menuRoutes } from './menu';
 import { submenuRoutes } from './submenu';
 import { facturaRoutes } from './factura';
+import { casaMatrizRoutes } from './casa-matriz';
 
 export const routes = express.Router();
 
@@ -24,3 +25,4 @@ routes.use(menuRoutes);
 routes.use(submenuRoutes);
 routes.use(pedidoRoutes);
 routes.use(facturaRoutes);
+routes.use(casaMatrizRoutes);

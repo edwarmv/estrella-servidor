@@ -80,6 +80,8 @@ export default class InicioSeeder implements Seeder {
       { nombre: 'Registrar submenú', path: '/submenus/nuevo-submenu' },
       { nombre: 'Clientes', path: '/clientes' },
       { nombre: 'Registrar cliente', path: '/clientes/nuevo-cliente' },
+      { nombre: 'Casa matriz', path: '/configuracion/casa-matriz' },
+      { nombre: 'Generador de código de control', path: '/configuracion/generador-codigo-control' },
     ])
     .execute();
 
@@ -96,6 +98,7 @@ export default class InicioSeeder implements Seeder {
       { nombre: 'Gestionar menús' },
       { nombre: 'Gestionar submenús' },
       { nombre: 'Gestionar clientes' },
+      { nombre: 'Configuración' },
     ])
     .execute();
 
@@ -147,6 +150,13 @@ export default class InicioSeeder implements Seeder {
     .relation(Menu, 'submenus')
     .of(7)
     .add([13, 14]);
+
+    // Menu configuracion
+    await connection
+    .createQueryBuilder()
+    .relation(Menu, 'submenus')
+    .of(8)
+    .add([15, 16]);
 
 
     // Obtenemos un array de todos los menús

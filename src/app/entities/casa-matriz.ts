@@ -16,7 +16,7 @@ export class CasaMatriz {
   direccion: string;
 
   @Column({ name: 'descripcion_actividad_economica' })
-  descripcionActivadEconomica: string;
+  descripcionActividadEconomica: string;
 
   @Column({ name: 'numero_telefono' })
   numeroTelefono: string;
