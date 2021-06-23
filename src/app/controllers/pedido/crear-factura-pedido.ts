@@ -8,9 +8,10 @@ import PdfPrinter from 'pdfmake';
 import { TDocumentDefinitions, TFontDictionary } from 'pdfmake/interfaces';
 import Big from 'big.js';
 import { basePath } from 'index';
-import { NumeroLiteral } from './numero-literal';
-import { CodigoControl } from './codigo-control/codigo-control';
-import { CodigoQR } from './codigo-qr';
+import { NumeroLiteral } from '../factura/numero-literal';
+import { CodigoControl } from '../factura/codigo-control/codigo-control';
+import { CodigoQR } from '../factura/codigo-qr';
+import { format } from 'date-fns';
 
 export class CrearFacturaPedido {
   constructor() {
@@ -173,6 +174,7 @@ export class CrearFacturaPedido {
           width: 80 * 2.835,
           height: 'auto'
         },
+        watermark: factura.anulado ? { text: 'Anulado', angle: -45 } : '',
         content: [
           { text: casaMatriz.nombre, style: 'title' },
           { text: sucursal.nombre, style: 'sucursal' },
@@ -192,7 +194,7 @@ export class CrearFacturaPedido {
             margin: [0, 5],
             alignment: 'center'
           },
-          { text: `Fecha: ${this.formatDate(factura.fechaEmision, true)}` },
+          { text: `Fecha: ${format(new Date(factura.fechaEmision), 'dd/MM/yyyy HH:mm')}` },
           { text: `NIT/CI: ${cliente.nitCI}` },
           {
             text: `Nombre: ${cliente.nombre} ${cliente.apellido}`,
@@ -239,8 +241,7 @@ export class CrearFacturaPedido {
             margin: [0, 5, 0, 0]
           },
           {
-            text: `FECHA LÍMITE DE EMISIÓN:\
-${this.formatDate(dosificacion.fechaLimiteEmision)}`,
+            text: `FECHA LÍMITE DE EMISIÓN: ${format(new Date(dosificacion.fechaLimiteEmision), 'dd/MM/yyyy')}`,
             bold: true,
             margin: [0, 0, 0, 5]
           },
@@ -305,26 +306,5 @@ EL USO ILÍCITO DE ESTA SERÁ SANCIONADO DE ACUERDO A LA LEY`,
     } catch(error) {
       throw(error);
     }
-  }
-
-  /**
-   * @returns DD/MM/YYYY H:m?
-   */
-  private formatDate(date: Date, time: boolean = false): string {
-    const day = date.getDate() < 10 ?
-      '0' + date.getDate() :
-      date.getDate().toString();
-
-    const month = date.getMonth() < 10 ?
-      '0' + date.getMonth() :
-      date.getMonth().toString();
-
-    const year = date.getFullYear();
-
-    const hours = date.getHours();
-
-    const minutes = date.getMinutes();
-
-    return `${day}/${month}/${year}${time ? `${hours}:${minutes}` : ''}`;
   }
 }

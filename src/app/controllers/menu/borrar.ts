@@ -23,19 +23,6 @@ export const borrarMenu = async (req: Request, res: Response) => {
         );
       });
 
-      const menu = await transaction.findOne(
-        Menu,
-        idMenu,
-        { relations: ['submenus'] }
-      );
-
-      const idsSubmenus = menu?.submenus.map(submenu => submenu.id);
-
-      await transaction.createQueryBuilder()
-      .relation(Menu, 'submenus')
-      .of(idMenu)
-      .remove(idsSubmenus);
-
       await transaction.delete(Menu, idMenu);
     });
 

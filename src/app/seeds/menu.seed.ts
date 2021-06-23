@@ -4,6 +4,6 @@ import { Menu } from 'app/entities/menu';
 
 export default class CrearMenu implements Seeder{
   public async run(factory: Factory, connection: Connection): Promise<any> {
-    await factory(Menu)().createMany(50);
+    await factory(Menu)().createMany(0);
   }
 }

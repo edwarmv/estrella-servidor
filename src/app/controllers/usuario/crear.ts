@@ -36,8 +36,8 @@ export const crearUsuario = async (req: Request, res: Response) => {
     usuario.setPassword(password);
 
     const nuevoUsuario = await getRepository(Usuario).save(usuario);
-    nuevoUsuario.key = '';
-    nuevoUsuario.salt = '';
+    // nuevoUsuario.key = '';
+    // nuevoUsuario.salt = '';
 
     const tokenVerificacion = new TokenVerificacion();
     tokenVerificacion.usuario = nuevoUsuario;

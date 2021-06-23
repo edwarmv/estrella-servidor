@@ -11,7 +11,6 @@ import {
 import { Cliente } from './cliente';
 import { DetallePedido } from './detalle-pedido';
 import { Usuario } from './usuario';
-import { PedidoRepartidor } from './pedido-repartidor';
 import { Factura } from './factura';
 
 export enum EstadoPedido {
@@ -65,11 +64,9 @@ export class Pedido {
   @JoinColumn({ name: 'clientes_id' })
   cliente: Cliente;
 
-  @OneToMany(
-    () => PedidoRepartidor,
-    pedidoRepartidor => pedidoRepartidor.pedido
-  )
-  pedidosRepartidores: PedidoRepartidor[];
+  @ManyToOne(() => Usuario, usuario => usuario.pedidos)
+  @JoinColumn({ name: 'repartidor_id'})
+  repartidor: Usuario;
 
   @OneToMany(() => DetallePedido, detallePedido => detallePedido.pedido)
   detallesPedidos: DetallePedido[];

@@ -17,7 +17,17 @@ export const iniciarSesion = async (req: Request, res: Response) => {
 
   try {
     const usuario = await getRepository(Usuario)
-    .findOne({ correoElectronico });
+    .findOne(
+      { correoElectronico },
+      {
+        select: [
+          'id',
+          'cuentaVerificada',
+          'key',
+          'salt'
+        ]
+      }
+    );
 
     if (!usuario) {
       return res.status(404).json({ mensaje: 'Usuario no encontrado.' });
@@ -45,9 +55,6 @@ export const iniciarSesion = async (req: Request, res: Response) => {
         subject: usuario.id.toString()
       }
     );
-
-    usuario.key = '';
-    usuario.salt = '';
 
     // en caso de que el usuario no tenga un rol asignado
     // if (!usuario.rolesUsuarios[0].rol) {

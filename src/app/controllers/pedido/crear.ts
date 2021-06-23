@@ -42,7 +42,10 @@ export const crearPedido  = async (req: Request, res: Response) => {
 
       await transaction.save<DetallePedido>(detallesPedidos);
 
-      res.json({ mensaje: 'Pedido registrado correctamente' });
+      res.status(201).json({
+        mensaje: 'Pedido registrado correctamente',
+        pedido
+      });
     });
   } catch(error) {
    res.status(500).json(error);

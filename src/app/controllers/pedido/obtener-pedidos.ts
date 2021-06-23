@@ -6,64 +6,113 @@ export class ObtenerPedidos {
   constructor() {
     this.exec = this.exec.bind(this);
   }
+
    async exec (req: Request, res: Response) {
     const skip = req.query.skip || 0;
     const take = req.query.take || 5;
-    const start = req.query.start;
-    const end = req.query.end;
+    const start = req.query.start || '';
+    const end = req.query.end || '';
     const sort = req.query.sort || 'fechaEntrega';
     const order = req.query.order ===  'DESC' ? 'DESC' : 'ASC';
     const termino = req.query.termino || '';
+    const estado = req.query.estado || '';
+    const facturado = req.query.facturado === '1' ? true : false;
+    const conServicioEntrega = req.query.conServicioEntrega === '1' ? true : false;
+    const repartidorAsignado = req.query.repartidorAsignado || '';
+    const idRepartidor = req.query.idRepartidor || '';
 
     try {
-      if (start && end) {
-        const [pedidos, total] = await this.pedidosCalendario(
-          start.toString(),
-          end.toString(),
-          sort.toString(),
-          order
-        );
+      const [pedidos, total] = await this.pedidosPaginacion({
+        skip: Number(skip),
+        take: Number(take),
+        start: start.toString(),
+        end: end.toString(),
+        termino: termino.toString(),
+        sort: sort.toString(),
+        order,
+        estado: estado.toString(),
+        facturado,
+        conServicioEntrega,
+        repartidorAsignado: repartidorAsignado as string,
+        idRepartidor: idRepartidor.toString(),
+      });
 
-        return res.json({ pedidos, total });
-      } else {
-        const [pedidos, total] = await this.pedidosPaginacion(
-          Number(skip),
-          Number(take),
-          termino.toString(),
-          sort.toString(),
-          order
-        );
-
-        return res.json({ pedidos, total });
-      }
-
+      return res.json({ pedidos, total });
     } catch(error) {
       res.status(500).json(error);
     }
   }
 
   private pedidosPaginacion(
-    skip: number,
-    take: number,
-    termino: string,
-    sort: string,
-    order: 'DESC' | 'ASC'
+    {
+      skip,
+      take,
+      start,
+      end,
+      termino,
+      sort,
+      order,
+      estado,
+      facturado,
+      conServicioEntrega,
+      repartidorAsignado,
+      idRepartidor,
+    }: {
+      skip: number,
+      take: number,
+      start: string,
+      end: string,
+      termino: string,
+      sort: string,
+      order: 'DESC' | 'ASC',
+      estado: string,
+      facturado: boolean,
+      conServicioEntrega: boolean,
+      repartidorAsignado: string,
+      idRepartidor: string,
+    }
   ): Promise<[Pedido[], number]> {
-    return getRepository(Pedido)
-    .createQueryBuilder('pedido')
-    .leftJoinAndSelect('pedido.cliente', 'cliente')
-    .skip(skip)
-    .take(take)
-    .where(
-      'LOWER(cliente.nombre) LIKE :nombre',
-      { nombre: `%${termino.toLowerCase()}%` }
-    )
-    .orWhere(
-      'LOWER(cliente.apellido) LIKE :apellido',
-      { apellido: `%${termino.toLowerCase()}%` }
-    )
-    .orderBy(`pedido.${sort}`, order)
-    .getManyAndCount();
+    const query =  getRepository(Pedido)
+      .createQueryBuilder('pedido')
+      .leftJoinAndSelect('pedido.cliente', 'cliente')
+      .leftJoinAndSelect('pedido.repartidor', 'repartidor')
+      .skip(skip)
+      .take(take)
+      .orderBy(`pedido.${sort}`, order);
+
+    if (termino) {
+      query.where(
+        'LOWER(cliente.nombre || \' \' || cliente.apellido) LIKE :nombre',
+        { nombre: `%${termino.toLowerCase()}%` }
+      );
+    }
+
+    if (estado) {
+      query
+      .andWhere('pedido.estado = :estado', { estado });
+    }
+
+    if (repartidorAsignado) {
+      query.andWhere(`repartidor.id IS ${repartidorAsignado === '1' ? 'NOT' : '' } NULL`);
+    }
+
+    if (idRepartidor) {
+      query.andWhere('repartidor.id = :idRepartidor', { idRepartidor });
+    }
+
+    if (facturado) {
+      query.innerJoinAndSelect('pedido.factura', 'factura');
+    }
+
+    if (conServicioEntrega) {
+      query.andWhere('pedido.conServicioEntrega = TRUE');
+    }
+
+    if (start && end) {
+      query.andWhere(`pedido.fechaEntrega BETWEEN '${start} 00:00:00' AND '${end} 23:59:59'`);
+    }
+
+    return query.getManyAndCount();
   }
 
   /**

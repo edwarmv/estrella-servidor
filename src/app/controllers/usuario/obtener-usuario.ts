@@ -13,9 +13,6 @@ export const obtenerUsuario = async (req: Request, res: Response) => {
       return res.status(404).json({ error: 'Usuario no encontrado.' });
     }
 
-    usuario.key = '';
-    usuario.salt = '';
-
     if (usuario.rolesUsuarios.length === 1) {
       usuario.rolesUsuarios = usuario.rolesUsuarios[0].rol ?
         usuario.rolesUsuarios : [];

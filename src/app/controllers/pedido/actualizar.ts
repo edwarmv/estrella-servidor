@@ -21,8 +21,7 @@ export const actualizarPedido = async (req: Request, res: Response) => {
 
     if (pedidoDB.estado === EstadoPedido.COMPLETADO) {
       return res.status(401).json({
-        mensaje: `El pedido ya ha sido completado, \
-no se permiten modificaciones`
+        mensaje: `El pedido ya ha sido completado, no se permiten modificaciones`
       });
     }
 
@@ -54,9 +53,11 @@ no se permiten modificaciones`
         await transaction.delete(DetallePedido, detallesEliminados);
       }
 
+      // primero creamos un registro en la tabla detalles_pedidos
       nuevosDetalles = await transaction
-        .save(DetallePedido, nuevosDetalles);
+      .save(DetallePedido, nuevosDetalles);
 
+      // agregamos los nuevos detalles al pedido
       await transaction.createQueryBuilder()
       .relation(Pedido, 'detallesPedidos')
       .of(pedido)
@@ -68,6 +69,7 @@ no se permiten modificaciones`
         });
       });
 
+      // actulizamos el cliente del pedido si es necesario
       if (pedido.cliente.id !== pedidoDB.cliente.id) {
         await transaction.createQueryBuilder()
         .relation(Pedido, 'cliente')

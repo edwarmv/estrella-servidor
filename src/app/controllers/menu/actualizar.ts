@@ -1,21 +1,13 @@
 import { Request, Response } from 'express';
-import { getRepository, getConnection } from 'typeorm';
+import { getRepository } from 'typeorm';
 import { Menu } from 'app/entities/menu';
 
 export const actualizarMenu = async (req: Request, res: Response) => {
   const idMenu = req.params.idMenu;
-  const { nombre, submenus }: Menu = req.body;
+  const { nombre, path }: Menu = req.body;
 
   try {
-    await getRepository(Menu).update(idMenu, { nombre });
-
-    const submenusIDs = submenus.map(submenu => submenu.id);
-
-    await getConnection()
-    .createQueryBuilder()
-    .relation(Menu, 'submenus')
-    .of(idMenu)
-    .add(submenusIDs);
+    await getRepository(Menu).update(idMenu, { nombre, path });
 
     res.json({ mensaje: 'Menú actualizado' });
   } catch(error) {

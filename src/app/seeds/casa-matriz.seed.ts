@@ -13,7 +13,7 @@ export default class CrearCasaMatriz implements Seeder {
       'AVENIDA 6 DE AGOSTO BARRIO TABLADITA Nº 0280';
     casaMatrizToSave.numeroTelefono = '66-40056';
     casaMatrizToSave.ubicacion = 'TARIJA-BOLIVIA';
-    casaMatrizToSave.descripcionActivadEconomica =
+    casaMatrizToSave.descripcionActividadEconomica =
       'Elaboración de Productos de Panadería (Pan, Galletas, Pastelería)';
 
     const casaMatriz = await connection.getRepository(CasaMatriz)

@@ -14,7 +14,8 @@ export const obtenerPedido = async (req: Request, res: Response) => {
           'usuario',
           'cliente',
           'detallesPedidos',
-          'detallesPedidos.producto'
+          'detallesPedidos.producto',
+          'factura'
         ]
       }
     );

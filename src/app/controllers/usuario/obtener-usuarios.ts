@@ -5,11 +5,11 @@ import { Usuario } from 'app/entities/usuario';
 export const obtenerUsuarios = async (req: Request, res: Response) => {
   const skip = req.query.skip || 0;
   const take = req.query.take || 5;
-
   const termino = req.query.termino || '';
+  const rol = req.query.rol || '';
 
   try {
-    const [ usuarios, total ] = await getRepository(Usuario)
+    const query = getRepository(Usuario)
     .createQueryBuilder('usuario')
     .skip(skip as number)
     .take(take as number)
@@ -27,21 +27,23 @@ export const obtenerUsuarios = async (req: Request, res: Response) => {
       'usuario.esEmpleado',
       'usuario.estado',
     ])
+    .leftJoinAndSelect('usuario.rolesUsuarios', 'rolesUsuarios')
+    .leftJoinAndSelect('rolesUsuarios.rol', 'rol')
     .orderBy('usuario.nombre', 'ASC')
-    .addOrderBy('usuario.apellido', 'ASC')
-    .where(
-      'LOWER(usuario.nitCI) LIKE :nitCI',
-      { nitCI: `%${(termino as string).toLowerCase()}%` }
-    )
-    .orWhere(
-      'LOWER(usuario.nombre) LIKE :nombre',
-      { nombre: `%${(termino as string).toLowerCase()}%` }
-    )
-    .orWhere(
-      'LOWER(usuario.apellido) LIKE :apellido',
-      { apellido: `%${(termino as string).toLowerCase()}%` }
-    )
-    .getManyAndCount();
+    .addOrderBy('usuario.apellido', 'ASC');
+
+    if (termino) {
+      query.where(
+        'LOWER(usuario.nitCI || \' \' || usuario.nombre || \' \' || usuario.apellido) LIKE :termino',
+        { termino: `%${(termino as string).toLowerCase()}%` }
+      );
+    }
+
+    if (rol) {
+      query.andWhere('LOWER(rol.nombre) LIKE :rol', { rol: `%${(rol as string).toLowerCase()}%`});
+    }
+
+    const [ usuarios, total ] = await query.getManyAndCount();
 
     res.json({
       usuarios,

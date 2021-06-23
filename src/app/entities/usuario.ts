@@ -2,8 +2,6 @@ import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 import { randomBytes, scryptSync } from 'crypto';
 import { RolUsuario } from './rol-usuario';
 import { Pedido } from './pedido';
-import { PedidoRepartidor } from './pedido-repartidor';
-import { Factura } from './factura';
 
 @Entity('usuarios')
 export class Usuario {
@@ -55,10 +53,10 @@ export class Usuario {
   @Column({ default: true })
   estado: boolean;
 
-  @Column('varchar')
+  @Column({ type: 'varchar', select: false })
   key: string;
 
-  @Column('varchar')
+  @Column({ type: 'varchar', select: false })
   salt: string;
 
   @OneToMany(() => RolUsuario, rolUsuario => rolUsuario.usuario)
@@ -66,12 +64,6 @@ export class Usuario {
 
   @OneToMany(() => Pedido, pedido => pedido.usuario)
   pedidos: Pedido[];
-
-  @OneToMany(
-    () => PedidoRepartidor,
-    pedidoRepartidor => pedidoRepartidor.usuario
-  )
-  pedidosRepartidores: PedidoRepartidor[];
 
   setPassword(password: string): void  {
     const salt = randomBytes(8).toString('hex');
