@@ -9,6 +9,12 @@ export const actualizarFotoProducto = async (req: Request, res: Response) => {
 
   const file = req.file;
 
+  if (!file) {
+    return res.status(401).json({
+      mensaje: 'No se subión ningún archivo'
+    });
+  }
+
   const filename = file.filename;
 
   const filePath = `./imagenes/fotos-productos/${filename}`;

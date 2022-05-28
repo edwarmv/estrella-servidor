@@ -6,7 +6,7 @@ export class Menu {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ type: 'citext', unique: true })
   nombre: string;
 
   @Column()

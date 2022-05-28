@@ -11,11 +11,12 @@ export const obtenerPedido = async (req: Request, res: Response) => {
       idPedido,
       {
         relations: [
-          'usuario',
           'cliente',
           'detallesPedidos',
           'detallesPedidos.producto',
-          'factura'
+          'factura',
+          'repartidor',
+          'pagosPedido',
         ]
       }
     );
@@ -23,9 +24,6 @@ export const obtenerPedido = async (req: Request, res: Response) => {
     if (!pedido) {
       return res.status(404).json({ mensaje: 'Pedido no encotrado' });
     }
-
-    pedido.usuario.key = '';
-    pedido.usuario.salt = '';
 
     res.json(pedido);
   } catch(error) {

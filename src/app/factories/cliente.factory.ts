@@ -20,8 +20,5 @@ define(Cliente, (faker: typeof Faker) => {
 ${faker.address.streetAddress()}`;
   cliente.direccionDomicilio = direccionDomicilio;
 
-  cliente.coordenadasDireccionDomicilio =
-    faker.random.number({ min: 1000000000 }).toString();
-
   return cliente;
 });

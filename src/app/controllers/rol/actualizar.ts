@@ -32,8 +32,6 @@ export const actualizarRol = async (req: Request, res: Response) => {
         return menusDBIDs.indexOf(menuID) === -1;
       });
 
-      console.log({ menusEliminadosIDs, nuevosMenusIDs });
-
       menusEliminadosIDs.forEach(async menuEliminadoID => {
         await getRepository(RolMenu).delete({ menu: { id: menuEliminadoID }});
       });

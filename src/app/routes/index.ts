@@ -10,6 +10,12 @@ import { pedidoRoutes } from './pedido';
 import { menuRoutes } from './menu';
 import { facturaRoutes } from './factura';
 import { casaMatrizRoutes } from './casa-matriz';
+import { pagoPedidoRoutes } from './pago-pedido';
+import { categoriaProductoRoutes } from './categoria-producto';
+import { categoriaProductoProductoRoutes } from './categoria-producto-producto';
+import { sucursalRoutes } from './sucursal';
+import { cajaRoutes } from './caja';
+import { movimientoCajaRoutes } from './movimiento-caja';
 
 export const routes = express.Router();
 
@@ -24,3 +30,9 @@ routes.use(menuRoutes);
 routes.use(pedidoRoutes);
 routes.use(facturaRoutes);
 routes.use(casaMatrizRoutes);
+routes.use(pagoPedidoRoutes);
+routes.use(categoriaProductoRoutes);
+routes.use(categoriaProductoProductoRoutes);
+routes.use(sucursalRoutes);
+routes.use(cajaRoutes);
+routes.use(movimientoCajaRoutes);

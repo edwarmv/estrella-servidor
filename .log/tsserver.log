@@ -1,0 +1,285 @@
+Info 0    [16:4:12.546] Starting TS Server
+Info 1    [16:4:12.547] Version: 3.9.10
+Info 2    [16:4:12.547] Arguments: /Users/edwar/.asdf/installs/nodejs/14.17.1/bin/node /Users/edwar/Documents/taller/estrella-servidor/node_modules/.bin/tsserver --logFile /Users/edwar/Documents/taller/estrella-servidor/.log/tsserver.log --logVerbosity info --cancellationPipeName /private/var/folders/_w/9vcm34nj5h59zvmdxp31vwbr0000gn/T/eacc3fddec8f39fdfbe6458a9c4a0fb0/tscancellation*
+Info 3    [16:4:12.547] Platform: darwin NodeVersion: 14 CaseSensitive: false
+Info 4    [16:4:12.562] Search path: /Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/pedido/pago
+Info 5    [16:4:12.563] For info: /Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/pedido/pago/actualizar.ts :: Config file name: /Users/edwar/Documents/taller/estrella-servidor/tsconfig.json
+Info 6    [16:4:12.563] Opened configuration file /Users/edwar/Documents/taller/estrella-servidor/tsconfig.json
+Info 7    [16:4:12.611] Config: /Users/edwar/Documents/taller/estrella-servidor/tsconfig.json : {
+ "rootNames": [
+  "/Users/edwar/Documents/taller/estrella-servidor/src/index.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/app.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/configuration/correo-verificacion.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/configuration/transporter.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/autentificacion/iniciar-sesion.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/autentificacion/reenviar-correo-verificacion.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/autentificacion/verificar-usuario.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/casa-matriz/actualizar.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/casa-matriz/obtener-casa-matriz.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/cliente/actualizar.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/cliente/borrar.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/cliente/crear.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/cliente/obtener-cliente.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/cliente/obtener-clientes.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/factura/codigo-qr.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/factura/factura-pdf.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/factura/generar-codigo-control.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/factura/numero-literal.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/factura/codigo-control/alleged-rc4.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/factura/codigo-control/base64.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/factura/codigo-control/casos-prueba.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/factura/codigo-control/codigo-control.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/factura/codigo-control/verhoeff.ts.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/menu/actualizar.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/menu/borrar.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/menu/crear.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/menu/obtener-menu.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/menu/obtener-menus.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/pedido/actualizar.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/pedido/anular-factura.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/pedido/asignar-repartidor.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/pedido/crear-factura-pedido.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/pedido/crear.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/pedido/obtener-detalles-pedido.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/pedido/obtener-pedido.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/pedido/obtener-pedidos.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/pedido/pedidos-facturados.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/pedido/reportes-backup.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/pedido/reportes.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/pedido/pago/actualizar.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/pedido/pago/borrar.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/pedido/pago/obtener-pagos.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/pedido/pago/registrar.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/producto/actualizar-foto.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/producto/actualizar.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/producto/borrar.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/producto/crear.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/producto/obtener-foto.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/producto/obtener-producto.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/producto/obtener-productos.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/rol/actualizar.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/rol/borrar.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/rol/crear.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/rol/obtener-rol.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/rol/obtener-roles.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/rol-menu/borrar.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/rol-menu/obtener-menus-rol-por-defecto.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/rol-menu/obtener-menus.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/rol-usuario/actualizar-rol-usuario.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/rol-usuario/asignar-rol-usuario.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/rol-usuario/borrar-rol-usuario.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/rol-usuario/establecer-rol-por-defecto.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/rol-usuario/obtener-rol-por-defecto.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/rol-usuario/obtener-rol-usuario.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/rol-usuario/obtener-roles-usuario.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/usuario/actualizar.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/usuario/cambiar-estado.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/usuario/crear.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/usuario/obtener-foto.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/usuario/obtener-usuario.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/usuario/obtener-usuarios.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/usuario/subir-foto.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/entities/casa-matriz.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/entities/cliente.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/entities/detalle-pedido.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/entities/dosificacion.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/entities/factura.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/entities/menu.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/entities/pago-pedido.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/entities/pedido.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/entities/producto.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/entities/rol-menu.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/entities/rol-usuario.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/entities/rol.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/entities/sucursal.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/entities/token-verificacion.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/entities/usuario.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/errors/http/bad-request.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/factories/cliente.factory.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/factories/menu.factory.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/factories/producto.factory.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/factories/rol.factory.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/factories/usuario.factory.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/middlewares/control-acceso.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/middlewares/subir-foto-producto.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/middlewares/subir-foto-usuario.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/middlewares/verificarToken.middleware.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/routes/autentificacion.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/routes/casa-matriz.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/routes/cliente.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/routes/factura.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/routes/index.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/routes/menu.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/routes/pago-pedido.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/routes/pedido.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/routes/producto.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/routes/rol-menu.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/routes/rol-usuario.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/routes/rol.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/routes/usuario.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/seeds/casa-matriz.seed.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/seeds/cliente.seed.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/seeds/inicio.seed.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/seeds/menu.seed.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/seeds/producto.seed.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/seeds/rol.seed.ts",
+  "/Users/edwar/Documents/taller/estrella-servidor/src/app/seeds/usuario.seed.ts"
+ ],
+ "options": {
+  "target": 1,
+  "module": 1,
+  "lib": [
+   "lib.es2015.d.ts"
+  ],
+  "allowJs": true,
+  "outDir": "/Users/edwar/Documents/taller/estrella-servidor/build",
+  "rootDir": "/Users/edwar/Documents/taller/estrella-servidor/src",
+  "baseUrl": "/Users/edwar/Documents/taller/estrella-servidor/src",
+  "strict": true,
+  "strictPropertyInitialization": false,
+  "noImplicitAny": false,
+  "esModuleInterop": true,
+  "resolveJsonModule": true,
+  "skipLibCheck": true,
+  "forceConsistentCasingInFileNames": true,
+  "experimentalDecorators": true,
+  "emitDecoratorMetadata": true,
+  "plugins": [],
+  "configFilePath": "/Users/edwar/Documents/taller/estrella-servidor/tsconfig.json"
+ }
+}
+Info 8    [16:4:12.679] Starting updateGraphWorker: Project: /Users/edwar/Documents/taller/estrella-servidor/tsconfig.json
+Info 9    [16:4:15.26] Finishing updateGraphWorker: Project: /Users/edwar/Documents/taller/estrella-servidor/tsconfig.json Version: 1 structureChanged: true Elapsed: 2347ms
+Info 10   [16:4:15.26] Project '/Users/edwar/Documents/taller/estrella-servidor/tsconfig.json' (Configured)
+Info 11   [16:4:15.26] 	Files (642)
+
+Info 12   [16:4:15.26] -----------------------------------------------
+Info 13   [16:4:15.75] Before ensureProjectForOpenFiles:
+Info 14   [16:4:15.75] After ensureProjectForOpenFiles:
+Info 15   [16:4:15.75] got projects updated in background, updating diagnostics for /Users/edwar/Documents/taller/estrella-servidor/src/app/controllers/pedido/pago/actualizar.ts
+Info 16   [16:4:15.76] DirectoryWatcher:: Triggered with /users/edwar/documents/taller/estrella-servidor/.log/ti-41510.log :: WatchInfo: /users/edwar/documents/taller/estrella-servidor 1 undefined Project: /Users/edwar/Documents/taller/estrella-servidor/tsconfig.json WatchType: Wild card directory
+Info 17   [16:4:15.76] Project: /Users/edwar/Documents/taller/estrella-servidor/tsconfig.json Detected file add/remove of non supported extension: /users/edwar/documents/taller/estrella-servidor/.log/ti-41510.log
+Info 18   [16:4:15.76] Elapsed:: 0ms DirectoryWatcher:: Triggered with /users/edwar/documents/taller/estrella-servidor/.log/ti-41510.log :: WatchInfo: /users/edwar/documents/taller/estrella-servidor 1 undefined Project: /Users/edwar/Documents/taller/estrella-servidor/tsconfig.json WatchType: Wild card directory
+Info 19   [16:4:15.76] DirectoryWatcher:: Triggered with /users/edwar/documents/taller/estrella-servidor/.log/ti-41510.log :: WatchInfo: /users/edwar/documents/taller/estrella-servidor 1 undefined Project: /Users/edwar/Documents/taller/estrella-servidor/tsconfig.json WatchType: Wild card directory
+Info 20   [16:4:15.76] Project: /Users/edwar/Documents/taller/estrella-servidor/tsconfig.json Detected file add/remove of non supported extension: /users/edwar/documents/taller/estrella-servidor/.log/ti-41510.log
+Info 21   [16:4:15.76] Elapsed:: 0ms DirectoryWatcher:: Triggered with /users/edwar/documents/taller/estrella-servidor/.log/ti-41510.log :: WatchInfo: /users/edwar/documents/taller/estrella-servidor 1 undefined Project: /Users/edwar/Documents/taller/estrella-servidor/tsconfig.json WatchType: Wild card directory
+Info 22   [16:4:15.76] DirectoryWatcher:: Triggered with /users/edwar/documents/taller/estrella-servidor/.log/ti-41510.log :: WatchInfo: /users/edwar/documents/taller/estrella-servidor 1 undefined Project: /Users/edwar/Documents/taller/estrella-servidor/tsconfig.json WatchType: Wild card directory
+Info 23   [16:4:15.76] Project: /Users/edwar/Documents/taller/estrella-servidor/tsconfig.json Detected file add/remove of non supported extension: /users/edwar/documents/taller/estrella-servidor/.log/ti-41510.log
+Info 24   [16:4:15.76] Elapsed:: 0ms DirectoryWatcher:: Triggered with /users/edwar/documents/taller/estrella-servidor/.log/ti-41510.log :: WatchInfo: /users/edwar/documents/taller/estrella-servidor 1 undefined Project: /Users/edwar/Documents/taller/estrella-servidor/tsconfig.json WatchType: Wild card directory
+Info 25   [16:4:15.76] DirectoryWatcher:: Triggered with /users/edwar/documents/taller/estrella-servidor/.log/ti-41510.log :: WatchInfo: /users/edwar/documents/taller/estrella-servidor 1 undefined Project: /Users/edwar/Documents/taller/estrella-servidor/tsconfig.json WatchType: Wild card directory
+Info 26   [16:4:15.76] Project: /Users/edwar/Documents/taller/estrella-servidor/tsconfig.json Detected file add/remove of non supported extension: /users/edwar/documents/taller/estrella-servidor/.log/ti-41510.log
+Info 27   [16:4:15.76] Elapsed:: 0ms DirectoryWatcher:: Triggered with /users/edwar/documents/taller/estrella-servidor/.log/ti-41510.log :: WatchInfo: /users/edwar/documents/taller/estrella-servidor 1 undefined Project: /Users/edwar/Documents/taller/estrella-servidor/tsconfig.json WatchType: Wild card directory
+Info 28   [16:4:44.410] Starting updateGraphWorker: Project: /Users/edwar/Documents/taller/estrella-servidor/tsconfig.json
+Info 29   [16:4:44.459] Finishing updateGraphWorker: Project: /Users/edwar/Documents/taller/estrella-servidor/tsconfig.json Version: 2 structureChanged: false Elapsed: 49ms
+Info 30   [16:4:44.459] Different program with same set of files:: oldProgram.structureIsReused:: 2
+Info 31   [16:4:44.462] getCompletionData: Get current token: 0
+Info 32   [16:4:44.462] getCompletionData: Is inside comment: 0
+Info 33   [16:4:44.462] getCompletionData: Get previous token 1: 0
+Info 34   [16:4:44.463] getCompletionsAtPosition: isCompletionListBlocker: 0
+Info 35   [16:4:44.499] getCompletionData: Semantic work: 36
+Info 36   [16:4:44.506] getCompletionsAtPosition: getCompletionEntriesFromSymbols: 6
+Info 37   [16:5:7.617] Starting updateGraphWorker: Project: /Users/edwar/Documents/taller/estrella-servidor/tsconfig.json
+Info 38   [16:5:7.659] Finishing updateGraphWorker: Project: /Users/edwar/Documents/taller/estrella-servidor/tsconfig.json Version: 3 structureChanged: false Elapsed: 42ms
+Info 39   [16:5:7.660] Different program with same set of files:: oldProgram.structureIsReused:: 2
+Info 40   [16:5:8.218] Starting updateGraphWorker: Project: /Users/edwar/Documents/taller/estrella-servidor/tsconfig.json
+Info 41   [16:5:8.248] Finishing updateGraphWorker: Project: /Users/edwar/Documents/taller/estrella-servidor/tsconfig.json Version: 4 structureChanged: false Elapsed: 30ms
+Info 42   [16:5:8.248] Different program with same set of files:: oldProgram.structureIsReused:: 2
+Info 43   [16:5:9.298] Starting updateGraphWorker: Project: /Users/edwar/Documents/taller/estrella-servidor/tsconfig.json
+Info 44   [16:5:9.330] Finishing updateGraphWorker: Project: /Users/edwar/Documents/taller/estrella-servidor/tsconfig.json Version: 5 structureChanged: false Elapsed: 32ms
+Info 45   [16:5:9.330] Different program with same set of files:: oldProgram.structureIsReused:: 2
+Info 46   [16:5:17.391] Starting updateGraphWorker: Project: /Users/edwar/Documents/taller/estrella-servidor/tsconfig.json
+Info 47   [16:5:17.425] Finishing updateGraphWorker: Project: /Users/edwar/Documents/taller/estrella-servidor/tsconfig.json Version: 6 structureChanged: false Elapsed: 34ms
+Info 48   [16:5:17.426] Different program with same set of files:: oldProgram.structureIsReused:: 2
+Info 49   [16:5:17.426] getCompletionData: Get current token: 0
+Info 50   [16:5:17.426] getCompletionData: Is inside comment: 0
+Info 51   [16:5:17.426] getCompletionData: Get previous token 1: 0
+Info 52   [16:5:17.426] getCompletionsAtPosition: isCompletionListBlocker: 0
+Info 53   [16:5:17.456] getCompletionData: Semantic work: 30
+Info 54   [16:5:17.473] getCompletionData: Get current token: 0
+Info 55   [16:5:17.473] getCompletionData: Is inside comment: 0
+Info 56   [16:5:17.473] getCompletionData: Get previous token 1: 0
+Info 57   [16:5:17.473] getCompletionsAtPosition: isCompletionListBlocker: 0
+Info 58   [16:5:17.475] getCompletionData: Semantic work: 2
+Info 59   [16:5:19.134] Starting updateGraphWorker: Project: /Users/edwar/Documents/taller/estrella-servidor/tsconfig.json
+Info 60   [16:5:19.164] Finishing updateGraphWorker: Project: /Users/edwar/Documents/taller/estrella-servidor/tsconfig.json Version: 7 structureChanged: false Elapsed: 30ms
+Info 61   [16:5:19.164] Different program with same set of files:: oldProgram.structureIsReused:: 2
+Info 62   [16:5:19.755] Starting updateGraphWorker: Project: /Users/edwar/Documents/taller/estrella-servidor/tsconfig.json
+Info 63   [16:5:19.788] Finishing updateGraphWorker: Project: /Users/edwar/Documents/taller/estrella-servidor/tsconfig.json Version: 8 structureChanged: false Elapsed: 33ms
+Info 64   [16:5:19.789] Different program with same set of files:: oldProgram.structureIsReused:: 2
+Info 65   [16:5:21.370] Starting updateGraphWorker: Project: /Users/edwar/Documents/taller/estrella-servidor/tsconfig.json
+Info 66   [16:5:21.392] Finishing updateGraphWorker: Project: /Users/edwar/Documents/taller/estrella-servidor/tsconfig.json Version: 9 structureChanged: false Elapsed: 21ms
+Info 67   [16:5:21.392] Different program with same set of files:: oldProgram.structureIsReused:: 2
+Info 68   [16:5:21.393] getCompletionData: Get current token: 0
+Info 69   [16:5:21.393] getCompletionData: Is inside comment: 0
+Info 70   [16:5:21.394] getCompletionData: Get previous token 1: 1
+Info 71   [16:5:21.394] getCompletionsAtPosition: isCompletionListBlocker: 0
+Info 72   [16:5:21.416] getCompletionData: Semantic work: 22
+Info 73   [16:5:21.419] getCompletionsAtPosition: getCompletionEntriesFromSymbols: 3
+Info 74   [16:5:38.145] Starting updateGraphWorker: Project: /Users/edwar/Documents/taller/estrella-servidor/tsconfig.json
+Info 75   [16:5:38.174] Finishing updateGraphWorker: Project: /Users/edwar/Documents/taller/estrella-servidor/tsconfig.json Version: 10 structureChanged: false Elapsed: 29ms
+Info 76   [16:5:38.174] Different program with same set of files:: oldProgram.structureIsReused:: 2
+Info 77   [16:5:42.952] Starting updateGraphWorker: Project: /Users/edwar/Documents/taller/estrella-servidor/tsconfig.json
+Info 78   [16:5:42.980] Finishing updateGraphWorker: Project: /Users/edwar/Documents/taller/estrella-servidor/tsconfig.json Version: 11 structureChanged: false Elapsed: 28ms
+Info 79   [16:5:42.980] Different program with same set of files:: oldProgram.structureIsReused:: 2
+Info 80   [16:5:43.567] Starting updateGraphWorker: Project: /Users/edwar/Documents/taller/estrella-servidor/tsconfig.json
+Info 81   [16:5:43.594] Finishing updateGraphWorker: Project: /Users/edwar/Documents/taller/estrella-servidor/tsconfig.json Version: 12 structureChanged: false Elapsed: 27ms
+Info 82   [16:5:43.594] Different program with same set of files:: oldProgram.structureIsReused:: 2
+Info 83   [16:5:47.95] Starting updateGraphWorker: Project: /Users/edwar/Documents/taller/estrella-servidor/tsconfig.json
+Info 84   [16:5:47.123] Finishing updateGraphWorker: Project: /Users/edwar/Documents/taller/estrella-servidor/tsconfig.json Version: 13 structureChanged: false Elapsed: 28ms
+Info 85   [16:5:47.123] Different program with same set of files:: oldProgram.structureIsReused:: 2
+Info 86   [16:5:47.123] getCompletionData: Get current token: 0
+Info 87   [16:5:47.123] getCompletionData: Is inside comment: 0
+Info 88   [16:5:47.123] getCompletionData: Get previous token 1: 0
+Info 89   [16:5:47.123] getCompletionsAtPosition: isCompletionListBlocker: 0
+Info 90   [16:5:47.142] getCompletionData: Semantic work: 19
+Info 91   [16:5:47.153] getCompletionData: Get current token: 0
+Info 92   [16:5:47.154] getCompletionData: Is inside comment: 0
+Info 93   [16:5:47.154] getCompletionData: Get previous token 1: 0
+Info 94   [16:5:47.154] getCompletionsAtPosition: isCompletionListBlocker: 0
+Info 95   [16:5:47.154] getCompletionData: Semantic work: 0
+Info 96   [16:5:48.620] Starting updateGraphWorker: Project: /Users/edwar/Documents/taller/estrella-servidor/tsconfig.json
+Info 97   [16:5:48.643] Finishing updateGraphWorker: Project: /Users/edwar/Documents/taller/estrella-servidor/tsconfig.json Version: 14 structureChanged: false Elapsed: 23ms
+Info 98   [16:5:48.643] Different program with same set of files:: oldProgram.structureIsReused:: 2
+Info 99   [16:5:49.29] getCompletionData: Get current token: 0
+Info 100  [16:5:49.29] getCompletionData: Is inside comment: 0
+Info 101  [16:5:49.29] getCompletionData: Get previous token 1: 0
+Info 102  [16:5:49.29] getCompletionsAtPosition: isCompletionListBlocker: 0
+Info 103  [16:5:49.52] getCompletionData: Semantic work: 23
+Info 104  [16:5:49.55] getCompletionsAtPosition: getCompletionEntriesFromSymbols: 2
+Info 105  [16:5:53.314] Starting updateGraphWorker: Project: /Users/edwar/Documents/taller/estrella-servidor/tsconfig.json
+Info 106  [16:5:53.341] Finishing updateGraphWorker: Project: /Users/edwar/Documents/taller/estrella-servidor/tsconfig.json Version: 15 structureChanged: false Elapsed: 27ms
+Info 107  [16:5:53.341] Different program with same set of files:: oldProgram.structureIsReused:: 2
+Info 108  [16:5:54.2] Starting updateGraphWorker: Project: /Users/edwar/Documents/taller/estrella-servidor/tsconfig.json
+Info 109  [16:5:54.29] Finishing updateGraphWorker: Project: /Users/edwar/Documents/taller/estrella-servidor/tsconfig.json Version: 16 structureChanged: false Elapsed: 27ms
+Info 110  [16:5:54.29] Different program with same set of files:: oldProgram.structureIsReused:: 2
+Info 111  [16:5:54.30] getCompletionData: Get current token: 0
+Info 112  [16:5:54.30] getCompletionData: Is inside comment: 0
+Info 113  [16:5:54.30] getCompletionData: Get previous token 1: 0
+Info 114  [16:5:54.30] getCompletionsAtPosition: isCompletionListBlocker: 0
+Info 115  [16:5:54.52] getCompletionData: Semantic work: 22
+Info 116  [16:5:54.65] getCompletionData: Get current token: 0
+Info 117  [16:5:54.65] getCompletionData: Is inside comment: 0
+Info 118  [16:5:54.65] getCompletionData: Get previous token 1: 0
+Info 119  [16:5:54.65] getCompletionsAtPosition: isCompletionListBlocker: 0
+Info 120  [16:5:54.66] getCompletionData: Semantic work: 1
+Info 121  [16:5:55.914] Starting updateGraphWorker: Project: /Users/edwar/Documents/taller/estrella-servidor/tsconfig.json
+Info 122  [16:5:55.939] Finishing updateGraphWorker: Project: /Users/edwar/Documents/taller/estrella-servidor/tsconfig.json Version: 17 structureChanged: false Elapsed: 25ms
+Info 123  [16:5:55.940] Different program with same set of files:: oldProgram.structureIsReused:: 2
+Info 124  [16:5:56.405] Starting updateGraphWorker: Project: /Users/edwar/Documents/taller/estrella-servidor/tsconfig.json
+Info 125  [16:5:56.433] Finishing updateGraphWorker: Project: /Users/edwar/Documents/taller/estrella-servidor/tsconfig.json Version: 18 structureChanged: false Elapsed: 28ms
+Info 126  [16:5:56.433] Different program with same set of files:: oldProgram.structureIsReused:: 2
+Info 127  [16:5:58.521] Starting updateGraphWorker: Project: /Users/edwar/Documents/taller/estrella-servidor/tsconfig.json
+Info 128  [16:5:58.549] Finishing updateGraphWorker: Project: /Users/edwar/Documents/taller/estrella-servidor/tsconfig.json Version: 19 structureChanged: false Elapsed: 28ms
+Info 129  [16:5:58.549] Different program with same set of files:: oldProgram.structureIsReused:: 2
+Info 130  [16:5:58.793] Starting updateGraphWorker: Project: /Users/edwar/Documents/taller/estrella-servidor/tsconfig.json
+Info 131  [16:5:58.818] Finishing updateGraphWorker: Project: /Users/edwar/Documents/taller/estrella-servidor/tsconfig.json Version: 20 structureChanged: false Elapsed: 25ms
+Info 132  [16:5:58.818] Different program with same set of files:: oldProgram.structureIsReused:: 2
+Info 133  [16:5:59.294] Starting updateGraphWorker: Project: /Users/edwar/Documents/taller/estrella-servidor/tsconfig.json
+Info 134  [16:5:59.318] Finishing updateGraphWorker: Project: /Users/edwar/Documents/taller/estrella-servidor/tsconfig.json Version: 21 structureChanged: false Elapsed: 24ms
+Info 135  [16:5:59.318] Different program with same set of files:: oldProgram.structureIsReused:: 2
+Info 136  [16:6:3.203] Starting updateGraphWorker: Project: /Users/edwar/Documents/taller/estrella-servidor/tsconfig.json
+Info 137  [16:6:3.229] Finishing updateGraphWorker: Project: /Users/edwar/Documents/taller/estrella-servidor/tsconfig.json Version: 22 structureChanged: false Elapsed: 26ms
+Info 138  [16:6:3.230] Different program with same set of files:: oldProgram.structureIsReused:: 2
+Info 139  [16:6:3.559] Starting updateGraphWorker: Project: /Users/edwar/Documents/taller/estrella-servidor/tsconfig.json
+Info 140  [16:6:3.582] Finishing updateGraphWorker: Project: /Users/edwar/Documents/taller/estrella-servidor/tsconfig.json Version: 23 structureChanged: false Elapsed: 23ms
+Info 141  [16:6:3.582] Different program with same set of files:: oldProgram.structureIsReused:: 2

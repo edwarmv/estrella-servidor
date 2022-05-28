@@ -17,14 +17,8 @@ export const obtenerUsuarios = async (req: Request, res: Response) => {
       'usuario.id',
       'usuario.nombre',
       'usuario.apellido',
-      'usuario.nitCI',
-      'usuario.telefonoFijo',
-      'usuario.telefonoMovil',
-      'usuario.direccionDomicilio',
-      'usuario.coordenadasDireccionDomicilio',
       'usuario.correoElectronico',
       'usuario.cuentaVerificada',
-      'usuario.esEmpleado',
       'usuario.estado',
     ])
     .leftJoinAndSelect('usuario.rolesUsuarios', 'rolesUsuarios')
@@ -34,7 +28,7 @@ export const obtenerUsuarios = async (req: Request, res: Response) => {
 
     if (termino) {
       query.where(
-        'LOWER(usuario.nitCI || \' \' || usuario.nombre || \' \' || usuario.apellido) LIKE :termino',
+        'LOWER(usuario.nombre || \' \' || usuario.apellido) LIKE :termino',
         { termino: `%${(termino as string).toLowerCase()}%` }
       );
     }

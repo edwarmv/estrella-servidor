@@ -18,8 +18,8 @@ usuarioRoutes.get('/usuario', obtenerUsuarios);
 usuarioRoutes.get('/usuario/:id', obtenerUsuario);
 
 usuarioRoutes.post('/usuario', [
-  body('nombres').notEmpty(),
-  body('apellidos').notEmpty(),
+  body('nombre').notEmpty(),
+  body('apellido').notEmpty(),
   body('correoElectronico').isEmail(),
   body('password').isLength({ min: 8 })
 ], crearUsuario);

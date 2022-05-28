@@ -7,12 +7,6 @@ export const actualizarUsuario = async (req: Request, res: Response) => {
   const {
     nombre,
     apellido,
-    nitCI,
-    telefonoFijo,
-    telefonoMovil,
-    direccionDomicilio,
-    coordenadasDireccionDomicilio,
-    esEmpleado,
     estado,
   }: Usuario = req.body;
 
@@ -27,12 +21,6 @@ export const actualizarUsuario = async (req: Request, res: Response) => {
   const usuario = new Usuario();
   usuario.nombre = nombre;
   usuario.apellido = apellido;
-  usuario.nitCI = nitCI;
-  usuario.telefonoFijo = telefonoFijo;
-  usuario.telefonoMovil = telefonoMovil;
-  usuario.direccionDomicilio = direccionDomicilio;
-  usuario.coordenadasDireccionDomicilio = coordenadasDireccionDomicilio;
-  usuario.esEmpleado = esEmpleado;
   usuario.estado = estado;
 
   try {

@@ -8,7 +8,7 @@ export class Rol {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column('varchar')
+  @Column({ type: 'citext', unique: true })
   nombre: string;
 
   @Column('varchar', { nullable: true })

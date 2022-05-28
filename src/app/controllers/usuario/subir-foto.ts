@@ -7,6 +7,9 @@ import Jimp from 'jimp';
 export const subirFotoUsuario = async (req: Request, res: Response) => {
   const idUsuario = parseInt(req.params.idUsuario, 10);
   const file = req.file;
+  if (!file) {
+    return res.status(200)
+  }
   const filename = file.filename;
   const filePath = `./imagenes/fotos-usuarios/${filename}`;
 

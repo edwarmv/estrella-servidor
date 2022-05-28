@@ -6,19 +6,19 @@ import {
   ManyToOne,
   OneToMany,
   JoinColumn,
-  OneToOne
+  OneToOne,
 } from 'typeorm';
 import { Cliente } from './cliente';
 import { DetallePedido } from './detalle-pedido';
 import { Usuario } from './usuario';
 import { Factura } from './factura';
+import { PagoPedido } from './pago-pedido';
 
 export enum EstadoPedido {
   PENDIENTE = 'pendiente',
   LISTO = 'listo',
   ENTREGADO = 'entregado',
   COMPLETADO = 'completado',
-  CANCELADO = 'cancelado'
 }
 
 @Entity('pedidos')
@@ -35,37 +35,36 @@ export class Pedido {
   @Column({
     type: 'boolean',
     name: 'con_servicio_entrega',
-    default: false
+    default: false,
   })
   conServicioEntrega: boolean;
 
   @Column({
     type: 'varchar',
     name: 'direccion_entrega',
-    nullable: true
+    nullable: true,
   })
   direccionEntrega: string;
 
   @Column({
     type: 'jsonb',
     name: 'coordenadas_direccion_entrega',
-    nullable: true
+    nullable: true,
   })
-  coordenadasDireccionEntrega: { lat: number, lng: number };
+  coordenadasDireccionEntrega: { lat: number; lng: number };
 
   @Column({ type: 'enum', enum: EstadoPedido, default: EstadoPedido.PENDIENTE })
   estado: EstadoPedido;
 
-  @ManyToOne(() => Usuario, usuario => usuario.pedidos)
-  @JoinColumn({ name: 'usuarios_id' })
-  usuario: Usuario;
+  @Column({ type: 'boolean', default: false })
+  cancelado: boolean;
 
   @ManyToOne(() => Cliente, cliente => cliente.pedidos)
   @JoinColumn({ name: 'clientes_id' })
   cliente: Cliente;
 
   @ManyToOne(() => Usuario, usuario => usuario.pedidos)
-  @JoinColumn({ name: 'repartidor_id'})
+  @JoinColumn({ name: 'repartidor_id' })
   repartidor: Usuario;
 
   @OneToMany(() => DetallePedido, detallePedido => detallePedido.pedido)
@@ -74,4 +73,7 @@ export class Pedido {
   @OneToOne(() => Factura, factura => factura.pedido)
   @JoinColumn({ name: 'facturas_id' })
   factura: Factura;
+
+  @OneToMany(() => PagoPedido, pagoPedido => pagoPedido.pedido)
+  pagosPedido: PagoPedido[];
 }

@@ -29,6 +29,15 @@ export const crearUsuario = async (req: Request, res: Response) => {
   }
 
   try {
+    const usuarioRegistrado = await getRepository(Usuario).findOne({ correoElectronico });
+
+    if (usuarioRegistrado) {
+      res.status(409).json({
+        mensaje:
+          `El correo electrónico ${correoElectronico} ya está registrado`
+      });
+    }
+
     const usuario = new Usuario();
     usuario.nombre = nombre;
     usuario.apellido = apellido;
@@ -36,8 +45,6 @@ export const crearUsuario = async (req: Request, res: Response) => {
     usuario.setPassword(password);
 
     const nuevoUsuario = await getRepository(Usuario).save(usuario);
-    // nuevoUsuario.key = '';
-    // nuevoUsuario.salt = '';
 
     const tokenVerificacion = new TokenVerificacion();
     tokenVerificacion.usuario = nuevoUsuario;
@@ -55,7 +62,7 @@ export const crearUsuario = async (req: Request, res: Response) => {
 
     await localTransporter.sendMail({
       from: 'Nodemailer <example@nodemailer.com>',
-      to: 'Nodemailer <example@nodemailer.com>',
+      to: usuario.correoElectronico,
       subject: 'Verificación de cuenta',
       html: htmlVerificacion(
         `${usuario.nombre} ${usuario.apellido}`,

@@ -1,7 +1,10 @@
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany, OneToOne, JoinColumn } from 'typeorm';
 import { randomBytes, scryptSync } from 'crypto';
 import { RolUsuario } from './rol-usuario';
 import { Pedido } from './pedido';
+import { TablaLog } from './tabla-log';
+import { Cliente } from './cliente';
+import { MovimientoCaja } from './movimiento-caja';
 
 @Entity('usuarios')
 export class Usuario {
@@ -14,26 +17,7 @@ export class Usuario {
   @Column('varchar')
   apellido: string;
 
-  @Column({ type: 'varchar', name: 'nit_ci', nullable: true, unique: true })
-  nitCI: string;
-
-  @Column({ type: 'varchar', name: 'telefono_fijo', nullable: true })
-  telefonoFijo: string;
-
-  @Column({ type: 'varchar', name: 'telefono_movil', nullable: true })
-  telefonoMovil: string;
-
-  @Column({ type: 'varchar', name: 'direccion_domicilio', nullable: true })
-  direccionDomicilio: string;
-
-  @Column({
-    type: 'varchar',
-    name: 'coordenadas_direccion_domicilio',
-    nullable: true
-  })
-  coordenadasDireccionDomicilio: string;
-
-  @Column({ type: 'varchar', name: 'correo_electronico', unique: true })
+  @Column({ type: 'citext', name: 'correo_electronico', unique: true })
   correoElectronico: string;
 
   @Column({ type: 'varchar', name: 'foto_perfil', nullable: true })
@@ -41,14 +25,6 @@ export class Usuario {
 
   @Column({ type: 'boolean', name: 'cuenta_verificada', default: false })
   cuentaVerificada: boolean;
-
-  @Column({
-    type: 'boolean',
-    nullable: false,
-    default: false,
-    name: 'es_empleado'
-  })
-  esEmpleado: boolean;
 
   @Column({ default: true })
   estado: boolean;
@@ -62,8 +38,18 @@ export class Usuario {
   @OneToMany(() => RolUsuario, rolUsuario => rolUsuario.usuario)
   rolesUsuarios: RolUsuario[];
 
-  @OneToMany(() => Pedido, pedido => pedido.usuario)
+  @OneToMany(() => Pedido, pedido => pedido.repartidor)
   pedidos: Pedido[];
+
+  @OneToOne(() => Cliente)
+  @JoinColumn({ name: 'clientes_id' })
+  cliente: Cliente;
+
+  @OneToMany(() => TablaLog, tablaLog => tablaLog.usuario)
+  tablaLogs: TablaLog<any>[];
+
+  @OneToMany(() => MovimientoCaja, movimientoCaja => movimientoCaja.usuario)
+  movimientosCajas: MovimientoCaja[]
 
   setPassword(password: string): void  {
     const salt = randomBytes(8).toString('hex');
@@ -76,3 +62,4 @@ export class Usuario {
     return this.key === key;
   }
 }
+

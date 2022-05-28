@@ -1,6 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
 import { Pedido } from './pedido';
-import { Factura } from './factura';
 
 @Entity('clientes')
 export class Cliente {
@@ -26,11 +25,11 @@ export class Cliente {
   direccionDomicilio: string;
 
   @Column({
-    type: 'varchar',
+    type: 'jsonb',
     name: 'coordenadas_direccion_domicilio',
     nullable: true
   })
-  coordenadasDireccionDomicilio: string;
+  coordenadasDireccionDomicilio: { lat: number, lng: number };
 
   @OneToMany(() => Pedido, pedido => pedido.cliente)
   pedidos: Pedido[];

@@ -1,0 +1,45 @@
+[16:4:12.703] Global cache location '/Users/edwar/Library/Caches/typescript/3.9', safe file path '/users/edwar/documents/taller/estrella-servidor/node_modules/typescript/lib/typingsafelist.json', types map path /users/edwar/documents/taller/estrella-servidor/node_modules/typescript/lib/typesmap.json
+[16:4:12.704] Processing cache location '/Users/edwar/Library/Caches/typescript/3.9'
+[16:4:12.704] Trying to find '/Users/edwar/Library/Caches/typescript/3.9/package.json'...
+[16:4:12.705] Loaded content of '/Users/edwar/Library/Caches/typescript/3.9/package.json': {"private":true,"dependencies":{"types-registry":"^0.1.552"},"devDependencies":{"@types/browserify":"^12.0.36","@types/express":"^4.17.9","@types/faker":"^5.1.4","@types/formidable":"^1.0.31","@types/gulp":"^4.0.7","@types/gulp-gh-pages":"0.0.32","@types/gulp-mustache":"^3.0.2","@types/gulp-rename":"0.0.33","@types/gulp-uglify":"^3.0.6","@types/inflection":"^1.5.28","@types/jsonwebtoken":"^8.5.0","@types/lodash":"^4.14.165","@types/mocha":"^8.0.4","@types/multer":"^1.4.4","@types/nodemailer":"^6.4.0","@types/nodemon":"^1.19.0","@types/optimist":"0.0.29","@types/pg":"^7.14.7","@types/sinon":"^9.0.8","@types/sprintf":"^0.1.0","@types/through2":"^2.0.36","@types/validator":"^13.1.0"}}
+[16:4:12.705] Loaded content of '/Users/edwar/Library/Caches/typescript/3.9/package-lock.json'
+[16:4:12.714] Adding entry into typings cache: 'browserify' => '/Users/edwar/Library/Caches/typescript/3.9/node_modules/@types/browserify/index.d.ts'
+[16:4:12.717] Adding entry into typings cache: 'express' => '/Users/edwar/Library/Caches/typescript/3.9/node_modules/@types/express/index.d.ts'
+[16:4:12.720] Adding entry into typings cache: 'faker' => '/Users/edwar/Library/Caches/typescript/3.9/node_modules/@types/faker/index.d.ts'
+[16:4:12.722] Adding entry into typings cache: 'formidable' => '/Users/edwar/Library/Caches/typescript/3.9/node_modules/@types/formidable/index.d.ts'
+[16:4:12.725] Adding entry into typings cache: 'gulp' => '/Users/edwar/Library/Caches/typescript/3.9/node_modules/@types/gulp/index.d.ts'
+[16:4:12.728] Adding entry into typings cache: 'gulp-gh-pages' => '/Users/edwar/Library/Caches/typescript/3.9/node_modules/@types/gulp-gh-pages/index.d.ts'
+[16:4:12.729] Adding entry into typings cache: 'gulp-mustache' => '/Users/edwar/Library/Caches/typescript/3.9/node_modules/@types/gulp-mustache/index.d.ts'
+[16:4:12.731] Adding entry into typings cache: 'gulp-rename' => '/Users/edwar/Library/Caches/typescript/3.9/node_modules/@types/gulp-rename/index.d.ts'
+[16:4:12.732] Adding entry into typings cache: 'gulp-uglify' => '/Users/edwar/Library/Caches/typescript/3.9/node_modules/@types/gulp-uglify/index.d.ts'
+[16:4:12.735] Adding entry into typings cache: 'inflection' => '/Users/edwar/Library/Caches/typescript/3.9/node_modules/@types/inflection/index.d.ts'
+[16:4:12.737] Adding entry into typings cache: 'jsonwebtoken' => '/Users/edwar/Library/Caches/typescript/3.9/node_modules/@types/jsonwebtoken/index.d.ts'
+[16:4:12.739] Adding entry into typings cache: 'lodash' => '/Users/edwar/Library/Caches/typescript/3.9/node_modules/@types/lodash/index.d.ts'
+[16:4:12.741] Adding entry into typings cache: 'mocha' => '/Users/edwar/Library/Caches/typescript/3.9/node_modules/@types/mocha/index.d.ts'
+[16:4:12.742] Adding entry into typings cache: 'multer' => '/Users/edwar/Library/Caches/typescript/3.9/node_modules/@types/multer/index.d.ts'
+[16:4:12.744] Adding entry into typings cache: 'nodemailer' => '/Users/edwar/Library/Caches/typescript/3.9/node_modules/@types/nodemailer/index.d.ts'
+[16:4:12.746] Adding entry into typings cache: 'nodemon' => '/Users/edwar/Library/Caches/typescript/3.9/node_modules/@types/nodemon/index.d.ts'
+[16:4:12.747] Adding entry into typings cache: 'optimist' => '/Users/edwar/Library/Caches/typescript/3.9/node_modules/@types/optimist/index.d.ts'
+[16:4:12.749] Adding entry into typings cache: 'pg' => '/Users/edwar/Library/Caches/typescript/3.9/node_modules/@types/pg/index.d.ts'
+[16:4:12.751] Adding entry into typings cache: 'sinon' => '/Users/edwar/Library/Caches/typescript/3.9/node_modules/@types/sinon/index.d.ts'
+[16:4:12.752] Adding entry into typings cache: 'sprintf' => '/Users/edwar/Library/Caches/typescript/3.9/node_modules/@types/sprintf/index.d.ts'
+[16:4:12.754] Adding entry into typings cache: 'through2' => '/Users/edwar/Library/Caches/typescript/3.9/node_modules/@types/through2/index.d.ts'
+[16:4:12.756] Adding entry into typings cache: 'validator' => '/Users/edwar/Library/Caches/typescript/3.9/node_modules/@types/validator/index.d.ts'
+[16:4:12.756] Finished processing cache location '/Users/edwar/Library/Caches/typescript/3.9'
+[16:4:12.756] Process id: 41511
+[16:4:12.757] NPM location: /Users/edwar/.asdf/installs/nodejs/14.17.1/bin/npm (explicit '--npmLocation' not  provided)
+[16:4:12.757] validateDefaultNpmLocation: false
+[16:4:12.757] Npm config file: /Users/edwar/Library/Caches/typescript/3.9/package.json
+[16:4:12.757] Updating types-registry npm package...
+[16:4:12.757] Exec: /Users/edwar/.asdf/installs/nodejs/14.17.1/bin/npm install --ignore-scripts types-registry@latest
+[16:4:14.256]     Succeeded. stdout:
+    + types-registry@0.1.552
+    updated 1 package and audited 60 packages in 1.034s
+
+1 package is looking for funding
+  run `npm fund` for details
+
+found 1 moderate severity vulnerability
+  run `npm audit fix` to fix them, or `npm audit` for details
+
+[16:4:14.256] Updated types-registry npm package

@@ -6,7 +6,7 @@ export class CasaMatriz {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ type: 'citext', unique: true })
   nombre: string;
 
   @Column()

@@ -36,7 +36,7 @@ export const reenviarCorreoVerificacion =
 
     await localTransporter.sendMail({
       from: 'Nodemailer <example@nodemailer.com>',
-      to: 'Nodemailer <example@nodemailer.com>',
+      to: usuario.correoElectronico,
       subject: 'Verificación de cuenta',
       html: htmlVerificacion(
         `${usuario.nombre} ${usuario.apellido}`,

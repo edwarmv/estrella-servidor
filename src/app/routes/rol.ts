@@ -11,17 +11,17 @@ export const rolRoutes = Router();
 
 rolRoutes.post('/rol', [
   body('nombre').notEmpty(),
-  // verificarToken
+  verificarToken
 ], crearRol);
 
 rolRoutes.put('/rol/:id', [
   body('nombre').notEmpty(),
   body('descripcion').notEmpty(),
-  // verificarToken
+  verificarToken
 ], actualizarRol);
 
-rolRoutes.delete('/rol/:id', borrarRol);
+rolRoutes.delete('/rol/:id', verificarToken, borrarRol);
 
-rolRoutes.get('/rol', obtenerRoles);
+rolRoutes.get('/rol', verificarToken, obtenerRoles);
 
-rolRoutes.get('/rol/:id', obtenerRol);
+rolRoutes.get('/rol/:id', verificarToken, obtenerRol);
